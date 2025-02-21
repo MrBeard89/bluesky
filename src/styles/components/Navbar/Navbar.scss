@@ -1,0 +1,40 @@
+@use '../../../sass/variables' as v;
+@forward '../../../sass/templates';
+
+.navbar_container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  background-color: v.$color_dark_blue;
+
+  .navbar_link_container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    width: 70%;
+
+    .navbar_link {
+      color: v.$color_grey;
+      padding: 0.5rem 0rem;
+
+      &:has(:hover, :focus) {
+        color: v.$color_white;
+        background-color: v.$color_dark_blue_hover;
+        border-radius: 5px;
+        box-shadow: 0px 0px 20px 2px v.$color_black;
+      }
+
+      .navbar_link_icon {
+        font-size: v.$font_size_xxxl;
+        padding: 0rem 2rem;
+      }
+    }
+  }
+
+  .active_link {
+    color: v.$color_white;
+  }
+}
