@@ -12,9 +12,10 @@
   .navbar_link_container {
     display: flex;
     justify-content: space-between;
+    gap: 0.5rem;
     align-items: center;
     padding: 1rem;
-    width: 70%;
+    width: fit-content;
 
     .navbar_link {
       color: v.$color_grey;

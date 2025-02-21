@@ -9,9 +9,10 @@
 .navbar_container .navbar_link_container {
   display: flex;
   justify-content: space-between;
+  gap: 0.5rem;
   align-items: center;
   padding: 1rem;
-  width: 70%;
+  width: fit-content;
 }
 .navbar_container .navbar_link_container .navbar_link {
   color: #5d6976;

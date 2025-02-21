@@ -1,8 +1,11 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
 body {
   display: flex;
   flex-direction: column;
-  margin: 0;
-  padding: 0;
   box-sizing: border-box;
   font-family: "Lato", serif;
   background-color: #0b121e;
