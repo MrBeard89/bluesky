@@ -2,8 +2,12 @@
 @forward '../sass/templates';
 
 body {
+  display: flex;
+  flex-direction: column;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: v.$font_family_lato;
+  background-color: v.$color_dark_bg;
+  color: v.$color_white;
 }

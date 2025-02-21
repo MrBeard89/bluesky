@@ -12,7 +12,7 @@ export const AppContextProvider = ({ children }) => {
     <AppContext.Provider value={contextValue}>
       <QueryClientProvider client={queryClient}>
         {children}
-        <ReactQueryDevtools initialIsOpen={false} />
+        {/* <ReactQueryDevtools initialIsOpen={false} /> */}
       </QueryClientProvider>
     </AppContext.Provider>
   )
