@@ -12,7 +12,7 @@ export const AppContextProvider = ({ children }) => {
   const [isGeoAllowed, setIsGeoAllowed] = useState(false)
   const [geoLocationCity, setGeoLocationCity] = useState('')
   const [city, setCity] = useState(isGeoAllowed ? geoLocationCity : 'Budapest') //alapértelmezés Budapest
-  const [lang, setLang] = useState('hu')
+  const [lang, setLang] = useState('en')
   const [unit, setUnit] = useState('metric')
   const [geoLocationValue, setGeoLocationValue] = useState({
     latitude: 47.497913,

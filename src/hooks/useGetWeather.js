@@ -6,13 +6,14 @@ export const fetchWeather = async (API_KEY, city, lang) => {
     const response = await fetch(url)
     const data = await response.json()
 
-    // Group data by date
+    //Variables
     const groupedWeatherData = {}
     const allWeatherData = []
+    const groupedTemps = []
 
     //Város név
     let cityNameData = data?.city.name
-
+    // Group data by date
     data?.list.forEach((entry) => {
       const date = entry.dt_txt // Extract date (YYYY-MM-DD)
       if (!groupedWeatherData[date]) groupedWeatherData[date] = []
@@ -45,9 +46,40 @@ export const fetchWeather = async (API_KEY, city, lang) => {
         seaLevel,
       }
     })
+    //Előrejelzés adat kinyerése
+    const getMinMaxTemperatures = () => {
+      dailyForecast?.forEach((entry) => {
+        const date = entry.date.split(' ')[0] // Extract the date (YYYY-MM-DD)
+        const temp = entry.avgTemp // Extract temperature
+        const weatherIcon = entry.weatherIcon // Extract icon
+        const weatherDesc = entry.weatherDesc // Extract desc
+
+        if (!groupedTemps[date]) {
+          const dateObj = new Date(date) // Convert string to Date object
+          const dayOfWeek =
+            lang == 'hu'
+              ? dateObj.toLocaleDateString('hu-HU', { weekday: 'long' })
+              : dateObj.toLocaleDateString('en-US', { weekday: 'long' }) // Get full weekday name
+
+          groupedTemps[date] = {
+            min: temp,
+            max: temp,
+            icon: weatherIcon,
+            forecastDate: dayOfWeek,
+            desc: weatherDesc,
+          }
+        } else {
+          groupedTemps[date].min = Math.min(groupedTemps[date].min, temp)
+          groupedTemps[date].max = Math.max(groupedTemps[date].max, temp)
+        }
+      })
+
+      return groupedTemps
+    }
+    getMinMaxTemperatures()
 
     //Átalakitott data push
-    allWeatherData.push({ cityNameData, dailyForecast, groupedWeatherData })
+    allWeatherData.push({ cityNameData, dailyForecast, groupedTemps })
 
     return allWeatherData
   } catch (error) {

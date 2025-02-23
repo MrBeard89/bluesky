@@ -43,7 +43,6 @@ export const Home = () => {
   if (decoderLoading || weatherLoading) return <div>Loading...</div>
   if (decoderError || weatherError) return <div>Error...</div>
   if (weatherSuccess) {
-    console.log(weatherData)
   }
 
   //Dinamikus nappal és éjszakai iconok
@@ -72,8 +71,6 @@ export const Home = () => {
   }
   filterTodayForecast()
 
-  console.log(filteredTodayWeatherArr)
-
   return (
     <div className='home_container'>
       {weatherSuccess ? (
@@ -101,15 +98,15 @@ export const Home = () => {
             <div className='home_details_container'>
               <p className='home_details_title'>Today's forecast</p>
               {filteredTodayWeatherArr.map((day, i) => {
-                let DinamycForecastDayIcons = DayIcons[`o${day.weatherIcon}`]
-                let DinamycForecastNightIcons = NightIcons[`o${day.weatherIcon}`]
+                let DinamycDetailsDayIcons = DayIcons[`o${day.weatherIcon}`]
+                let DinamycDetailsNightIcons = NightIcons[`o${day.weatherIcon}`]
                 return (
                   <div key={i} className='home_details_hours_container'>
                     <p className='details_date'>{formatTime(day.date)}</p>
                     {day.weatherIcon.slice(-1) === 'd' ? (
-                      <DinamycForecastDayIcons className='details_day_icon' />
+                      <DinamycDetailsDayIcons className='details_day_icon' />
                     ) : (
-                      <DinamycForecastNightIcons className='details_night_icon' />
+                      <DinamycDetailsNightIcons className='details_night_icon' />
                     )}
                     <p className='details_temp'>
                       {Math.floor(day.avgTemp)} {unit === 'metric' ? '°C' : '°F'}
@@ -179,6 +176,31 @@ export const Home = () => {
                   </div>
                 </div>
               </div>
+            </div>
+          </div>
+          {/* 5 day forecast */}
+          <div className='home_forecast_wrapper'>
+            <div className='home_forecast_container'>
+              <p className='home_forecast_container_title'>5-day forecast</p>
+              {Object.values(weatherData[0].groupedTemps).map((forecastData, i) => {
+                let DinamycForecastDayIcons = DayIcons[`o${forecastData.icon}`]
+                let DinamycForecastNightIcons = NightIcons[`o${forecastData.icon}`]
+                return (
+                  <div className='home_forecast_element' key={i}>
+                    <p className='forecast_date'>{forecastData.forecastDate}</p>
+                    {forecastData.icon.slice(-1) === 'd' ? (
+                      <DinamycForecastDayIcons className='forecast_day_icon' />
+                    ) : (
+                      <DinamycForecastNightIcons className='forecast_night_icon' />
+                    )}
+                    <p className='forecast_desc'>{forecastData.desc}</p>
+                    <p className='forecast_max_min_value'>
+                      {Math.floor(forecastData.max)}
+                      <span>/{Math.floor(forecastData.min)}</span>
+                    </p>
+                  </div>
+                )
+              })}
             </div>
           </div>
         </>

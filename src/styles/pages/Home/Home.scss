@@ -1,6 +1,7 @@
 @use '../../../sass/variables' as v;
 @forward '../../../sass/templates';
 
+//Home container
 .home_container {
   display: flex;
   flex-direction: column;
@@ -51,7 +52,7 @@
       overflow-x: scroll;
       background-color: v.$color_dark_blue;
       border-radius: 8px;
-      padding: 1rem 0rem;
+      padding: 1.2rem 0rem;
 
       .home_details_title {
         position: absolute;
@@ -162,6 +163,61 @@
               text-align: left;
               font-weight: v.$font_weight_bold;
             }
+          }
+        }
+      }
+    }
+  }
+  //Forecast Wrapper
+  .home_forecast_wrapper {
+    display: flex;
+    justify-content: center;
+    width: 100vw;
+    height: fit-content;
+    margin-bottom: 2rem;
+
+    .home_forecast_container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      width: 90%;
+      background-color: v.$color_dark_blue;
+      border-radius: 8px;
+      padding: 2rem 0rem 1.2rem 0rem;
+
+      .home_forecast_container_title {
+        position: absolute;
+        top: 0.5rem;
+        left: 1rem;
+        color: v.$color_grey;
+        font-weight: v.$font_weight_bold;
+      }
+
+      .home_forecast_element {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem;
+
+        .forecast_date {
+          color: v.$color_grey;
+          font-weight: v.$font_weight_bold;
+          width: 100px;
+        }
+        .forecast_desc {
+          width: 125px;
+        }
+        .forecast_day_icon {
+          font-size: v.$font_size_xxl;
+        }
+        .forecast_night_icon {
+          font-size: v.$font_size_xxl;
+        }
+        .forecast_max_min_value {
+          font-weight: v.$font_weight_bold;
+          span {
+            color: v.$color_grey;
           }
         }
       }
