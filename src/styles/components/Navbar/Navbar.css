@@ -5,6 +5,7 @@
   position: fixed;
   bottom: 0;
   background-color: #202b3c;
+  z-index: 5;
 }
 .navbar_container .navbar_link_container {
   display: flex;

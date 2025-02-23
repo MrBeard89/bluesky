@@ -14,7 +14,7 @@ export const fetchWeather = async (API_KEY, city, lang) => {
     let cityNameData = data?.city.name
 
     data?.list.forEach((entry) => {
-      const date = entry.dt_txt.split(' ')[0] // Extract date (YYYY-MM-DD)
+      const date = entry.dt_txt // Extract date (YYYY-MM-DD)
       if (!groupedWeatherData[date]) groupedWeatherData[date] = []
       groupedWeatherData[date].push(entry)
     })
@@ -27,12 +27,27 @@ export const fetchWeather = async (API_KEY, city, lang) => {
       const avgTemp = forecasts.reduce((sum, f) => sum + f.main.temp, 0) / forecasts.length
       const weatherDesc = forecasts[0].weather[0].description
       const weatherIcon = forecasts[0].weather[0].icon
+      const windSpeed = forecasts[0].wind.speed
+      const feelsLike = forecasts[0].main.feels_like
+      const humidity = forecasts[0].main.humidity
+      const seaLevel = forecasts[0].main.sea_level
 
-      return { date, minTemp, maxTemp, avgTemp, weatherDesc, weatherIcon }
+      return {
+        date,
+        minTemp,
+        maxTemp,
+        avgTemp,
+        weatherDesc,
+        weatherIcon,
+        windSpeed,
+        feelsLike,
+        humidity,
+        seaLevel,
+      }
     })
 
     //Átalakitott data push
-    allWeatherData.push({ cityNameData, groupedWeatherData, dailyForecast })
+    allWeatherData.push({ cityNameData, dailyForecast, groupedWeatherData })
 
     return allWeatherData
   } catch (error) {
