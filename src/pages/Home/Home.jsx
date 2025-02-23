@@ -15,6 +15,9 @@ import { SiLevelsdotfyi } from 'react-icons/si'
 
 //Scss
 import '../../styles/pages/Home/Home.scss'
+//
+import { FetchingError } from '../../components/FetchingError/FetchingError'
+import { LoadingSpinner } from '../../components/LoadingSpinner/LoadingSpinner'
 
 export const Home = () => {
   const { geoLocationValue, isGeoAllowed, handleCity, API_KEY, city, lang, unit } =
@@ -40,9 +43,12 @@ export const Home = () => {
     isError: weatherError,
   } = useGetWeather(API_KEY, city, lang)
 
-  if (decoderLoading || weatherLoading) return <div>Loading...</div>
-  if (decoderError || weatherError) return <div>Error...</div>
-  if (weatherSuccess) {
+  if (decoderLoading || weatherLoading) {
+    return <LoadingSpinner />
+  }
+  if (decoderError || weatherError) {
+    console.log(weatherErrorData, decoderErrorData)
+    return <FetchingError />
   }
 
   //Dinamikus nappal és éjszakai iconok
@@ -205,7 +211,7 @@ export const Home = () => {
           </div>
         </>
       ) : (
-        'No data available'
+        <FetchingError />
       )}
     </div>
   )

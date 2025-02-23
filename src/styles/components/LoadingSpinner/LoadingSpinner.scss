@@ -1,0 +1,26 @@
+@use '../../../sass/variables' as v;
+
+.spinner_container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: fit-content;
+  margin-top: 4rem;
+
+  .spinner {
+    font-size: 4rem;
+    color: v.$color_dark_blue_hover;
+    animation: spinner 0.5s linear infinite;
+  }
+}
+
+//keyframes
+
+@keyframes spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
