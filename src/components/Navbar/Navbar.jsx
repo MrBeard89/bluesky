@@ -18,15 +18,27 @@ export const Navbar = () => {
   return (
     <div className='navbar_container'>
       <div className='navbar_link_container'>
-        <Link to={'/home'} className='navbar_link' onClick={() => handleActiveNavbar('home')}>
+        <Link
+          to={'/home'}
+          className={`navbar_link ${activeNav == '/home' ? 'active_link' : ''}`}
+          onClick={() => handleActiveNavbar('home')}
+        >
           <FaCloudSunRain
             className={`navbar_link_icon ${activeNav == '/home' ? 'active_link' : ''}`}
           />
         </Link>
-        <Link to={'/cities'} className='navbar_link' onClick={() => handleActiveNavbar('home')}>
+        <Link
+          to={'/cities'}
+          className={`navbar_link ${activeNav == '/cities' ? 'active_link' : ''}`}
+          onClick={() => handleActiveNavbar('home')}
+        >
           <FaList className={`navbar_link_icon ${activeNav == '/cities' ? 'active_link' : ''}`} />
         </Link>
-        <Link to={'/settings'} className='navbar_link' onClick={() => handleActiveNavbar('home')}>
+        <Link
+          to={'/settings'}
+          className={`navbar_link ${activeNav == '/settings' ? 'active_link' : ''}`}
+          onClick={() => handleActiveNavbar('home')}
+        >
           <VscSettings
             className={`navbar_link_icon ${activeNav == '/settings' ? 'active_link' : ''}`}
           />

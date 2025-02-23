@@ -35,17 +35,18 @@ export const Home = () => {
 
   if (decoderLoading || weatherLoading) return <div>Loading...</div>
   if (decoderError || weatherError) return <div>Error...</div>
-
-  console.log(weatherData, weatherData.list[0].weather[0].icon)
+  if (weatherSuccess) {
+    console.log(weatherData)
+  }
 
   //Dinamikus nappal és éjszakai iconok
-  let DinamycDayIcons = DayIcons[weatherData.list[0].weather[0].icon]
-  let DinamycNightIcons = NightIcons[weatherData.list[0].weather[0].icon]
+  // let DinamycDayIcons = DayIcons[`o${weatherData.list[0].weather[0].icon}`]
+  // let DinamycNightIcons = NightIcons[`o${weatherData.list[0].weather[0].icon}`]
 
   return (
     <div className='home_container'>
       <div className='home_info_container'>
-        {weatherSuccess ? (
+        {/* {weatherSuccess ? (
           <>
             <h1 className='home_city_name'>{weatherData.city.name}</h1>
             <div className='home_description'>{weatherData.list[0].weather[0].description}</div>
@@ -63,7 +64,7 @@ export const Home = () => {
           </>
         ) : (
           'No data available'
-        )}
+        )} */}
       </div>
     </div>
   )

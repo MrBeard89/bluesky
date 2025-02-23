@@ -22,7 +22,6 @@
   color: #d5dbe1;
   background-color: #2e3d56;
   border-radius: 5px;
-  box-shadow: 0px 0px 20px 2px #1e1f20;
 }
 .navbar_container .navbar_link_container .navbar_link .navbar_link_icon {
   font-size: 35px;
@@ -30,4 +29,6 @@
 }
 .navbar_container .active_link {
   color: #d5dbe1;
+  border-radius: 5px;
+  background-color: #2e3d56;
 }/*# sourceMappingURL=Navbar.css.map */
