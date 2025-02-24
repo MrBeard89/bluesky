@@ -32,10 +32,11 @@
   justify-content: center;
   width: 100vw;
   margin-bottom: 2rem;
+  position: relative;
 }
 .home_container .home_details_wrapper .home_details_container {
   display: flex;
-  justify-content: center;
+  gap: 0.4rem;
   position: relative;
   width: 90%;
   overflow-x: scroll;
@@ -44,6 +45,7 @@
   padding: 1.2rem 0rem;
 }
 .home_container .home_details_wrapper .home_details_container .home_details_title {
+  z-index: 5;
   position: absolute;
   top: 0.5rem;
   left: 1rem;
@@ -54,7 +56,10 @@
   display: flex;
   align-items: center;
   flex-direction: column;
+  gap: 0.5rem;
   padding-top: 2rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
   width: 120px;
   height: fit-content;
   position: relative;
@@ -62,6 +67,8 @@
 .home_container .home_details_wrapper .home_details_container .home_details_hours_container .details_date {
   color: #5d6976;
   font-weight: 700;
+  width: 80px;
+  text-align: center;
 }
 .home_container .home_details_wrapper .home_details_container .home_details_hours_container .details_day_icon {
   font-size: 55px;

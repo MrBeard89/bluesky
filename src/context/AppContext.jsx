@@ -9,6 +9,8 @@ export const AppContextProvider = ({ children }) => {
   const API_KEY = import.meta.env.VITE_API_KEY
   // States
   const [active, setActive] = useState('home')
+  const [selectedCity, setselectedCity] = useState('')
+  const [selectedCityArray, setSelectedCityArray] = useState([])
   const [isGeoAllowed, setIsGeoAllowed] = useState(false)
   const [geoLocationCity, setGeoLocationCity] = useState('')
   const [city, setCity] = useState(isGeoAllowed ? geoLocationCity : 'Budapest') //alapértelmezés Budapest
@@ -18,7 +20,7 @@ export const AppContextProvider = ({ children }) => {
     latitude: 47.497913,
     longitude: 19.040236,
   }) //alapértelmezés Budapest
-
+  console.log(selectedCity)
   /////////////////////////////////////////
   //Geo adatok lekérdezése function
   function getGeoLocation() {
@@ -61,6 +63,19 @@ export const AppContextProvider = ({ children }) => {
   const handleCity = (city) => {
     setCity(city)
   }
+  const handleSelectedCity = (city) => {
+    setselectedCity(city)
+  }
+  const handleSelectedCityArray = (city) => {
+    setSelectedCityArray((prev) => [...prev, city])
+    console.log(selectedCityArray)
+  }
+  const handleLang = (lang) => {
+    setLang(lang)
+  }
+  const handleUnit = (unit) => {
+    setUnit(unit)
+  }
   const handleGeoCity = (geocity) => {
     setGeoLocationCity(geocity)
   }
@@ -78,8 +93,14 @@ export const AppContextProvider = ({ children }) => {
     unit,
     geoLocationValue,
     API_KEY,
+    selectedCity,
+    selectedCityArray,
+    handleSelectedCity,
+    handleSelectedCityArray,
     handleActiveNavbar,
     handleCity,
+    handleLang,
+    handleUnit,
     handleGeoCity,
   }
   return (

@@ -6,7 +6,7 @@ import { AppContext } from '../../context/AppContext'
 import { fetchWeather } from '../../hooks/useGetWeather'
 
 export const FetchingError = () => {
-  const { API_KEY, city, lang } = useContext(AppContext)
+  const { API_KEY, city, unit, lang } = useContext(AppContext)
   const navigate = useNavigate()
   const queryClient = useQueryClient()
 
@@ -14,7 +14,7 @@ export const FetchingError = () => {
     navigate('/home')
     const data = await queryClient.fetchQuery({
       queryKey: ['weather', city],
-      queryFn: () => fetchWeather(API_KEY, city, lang),
+      queryFn: () => fetchWeather(API_KEY, city, unit, lang),
     })
     return data
   }

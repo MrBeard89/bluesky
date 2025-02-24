@@ -1,0 +1,21 @@
+.spinner_container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: fit-content;
+  margin-top: 4rem;
+}
+.spinner_container .spinner {
+  font-size: 4rem;
+  color: #2e3d56;
+  animation: spinner 0.5s linear infinite;
+}
+
+@keyframes spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}/*# sourceMappingURL=LoadingSpinner.css.map */

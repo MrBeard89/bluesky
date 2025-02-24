@@ -1,8 +1,8 @@
 import { useQuery } from '@tanstack/react-query'
 
-export const fetchWeather = async (API_KEY, city, lang) => {
+export const fetchWeather = async (API_KEY, city, unit, lang) => {
   try {
-    const url = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&lang=${lang}&appid=${API_KEY}`
+    const url = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=${unit}&lang=${lang}&appid=${API_KEY}`
     const response = await fetch(url)
     const data = await response.json()
 
@@ -91,7 +91,7 @@ const useGetWeather = (API_KEY, city, lang) => {
   return useQuery({
     queryKey: ['weather', city],
     queryFn: () => fetchWeather(API_KEY, city, lang),
-    staleTime: 1200,
+    //staleTime: 1200,
   })
 }
 

@@ -41,7 +41,7 @@ export const Home = () => {
     isLoading: weatherLoading,
     isSuccess: weatherSuccess,
     isError: weatherError,
-  } = useGetWeather(API_KEY, city, lang)
+  } = useGetWeather(API_KEY, city, unit, lang)
 
   if (decoderLoading || weatherLoading) {
     return <LoadingSpinner />
@@ -102,7 +102,9 @@ export const Home = () => {
           {/*Forecast details container */}
           <div className='home_details_wrapper'>
             <div className='home_details_container'>
-              <p className='home_details_title'>Today's forecast</p>
+              <p className='home_details_title'>
+                {lang == 'hu' ? 'Mai Időjárás' : "Today's weather"}{' '}
+              </p>
               {filteredTodayWeatherArr.map((day, i) => {
                 let DinamycDetailsDayIcons = DayIcons[`o${day.weatherIcon}`]
                 let DinamycDetailsNightIcons = NightIcons[`o${day.weatherIcon}`]
@@ -127,7 +129,7 @@ export const Home = () => {
           {/* More data container */}
           <div className='home_more_data_wrapper'>
             <div className='home_more_data_container'>
-              <p className='home_more_data_title'>Conditions</p>
+              <p className='home_more_data_title'>{lang == 'hu' ? 'Körülmények' : 'Conditions'}</p>
 
               <div className='home_more_data_info_wrapper home_more_part_1'>
                 {/* Valós érzet */}
@@ -136,7 +138,9 @@ export const Home = () => {
                     <FaTemperatureEmpty className='data_container_icon' />
                   </div>
                   <div className='data_container'>
-                    <p className='data_container_title'>Reel feel</p>
+                    <p className='data_container_title'>
+                      {lang == 'hu' ? 'Valós érzet' : 'Reel feel'}
+                    </p>
                     <p className='data_container_value'>
                       {Math.floor(weatherData[0].dailyForecast[0].feelsLike)}
                     </p>
@@ -148,7 +152,9 @@ export const Home = () => {
                     <LuWind className='data_container_icon' />
                   </div>
                   <div className='data_container'>
-                    <p className='data_container_title'>Wind speed</p>
+                    <p className='data_container_title'>
+                      {lang == 'hu' ? 'Szélsebesség' : 'Wind speed'}
+                    </p>
                     <p className='data_container_value'>
                       {Math.floor(weatherData[0].dailyForecast[0].windSpeed)} km/h
                     </p>
@@ -163,7 +169,9 @@ export const Home = () => {
                     <FaPercentage className='data_container_icon' />
                   </div>
                   <div className='data_container'>
-                    <p className='data_container_title'>Humidity</p>
+                    <p className='data_container_title'>
+                      {lang == 'hu' ? 'Páratartalom' : 'Humidity'}
+                    </p>
                     <p className='data_container_value'>
                       {Math.floor(weatherData[0].dailyForecast[0].humidity)}
                     </p>
@@ -175,7 +183,9 @@ export const Home = () => {
                     <SiLevelsdotfyi className='data_container_icon' />
                   </div>
                   <div className='data_container'>
-                    <p className='data_container_title'>Sea level</p>
+                    <p className='data_container_title'>
+                      {lang == 'hu' ? 'Tengerszint' : 'Sea level'}
+                    </p>
                     <p className='data_container_value'>
                       {Math.floor(weatherData[0].dailyForecast[0].seaLevel)}
                     </p>
@@ -187,7 +197,9 @@ export const Home = () => {
           {/* 5 day forecast */}
           <div className='home_forecast_wrapper'>
             <div className='home_forecast_container'>
-              <p className='home_forecast_container_title'>5-day forecast</p>
+              <p className='home_forecast_container_title'>
+                {lang == 'hu' ? '5-napos előrejelzés' : '5-day forecast'}
+              </p>
               {Object.values(weatherData[0].groupedTemps).map((forecastData, i) => {
                 let DinamycForecastDayIcons = DayIcons[`o${forecastData.icon}`]
                 let DinamycForecastNightIcons = NightIcons[`o${forecastData.icon}`]
