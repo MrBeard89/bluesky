@@ -13,14 +13,18 @@ export const AppContextProvider = ({ children }) => {
   const [selectedCityArray, setSelectedCityArray] = useState([])
   const [isGeoAllowed, setIsGeoAllowed] = useState(false)
   const [geoLocationCity, setGeoLocationCity] = useState('')
-  const [city, setCity] = useState(isGeoAllowed ? geoLocationCity : 'Budapest') //alapértelmezés Budapest
+  const [city, setCity] = useState(
+    isGeoAllowed ? geoLocationCity : selectedCity ? selectedCity : 'Budapest'
+  ) //alapértelmezés Budapest
   const [lang, setLang] = useState('en')
+
   const [unit, setUnit] = useState('metric')
   const [geoLocationValue, setGeoLocationValue] = useState({
     latitude: 47.497913,
     longitude: 19.040236,
   }) //alapértelmezés Budapest
-  console.log(selectedCity)
+  console.log(geoLocationCity, isGeoAllowed)
+
   /////////////////////////////////////////
   //Geo adatok lekérdezése function
   function getGeoLocation() {
@@ -68,7 +72,6 @@ export const AppContextProvider = ({ children }) => {
   }
   const handleSelectedCityArray = (city) => {
     setSelectedCityArray((prev) => [...prev, city])
-    console.log(selectedCityArray)
   }
   const handleLang = (lang) => {
     setLang(lang)
@@ -78,6 +81,11 @@ export const AppContextProvider = ({ children }) => {
   }
   const handleGeoCity = (geocity) => {
     setGeoLocationCity(geocity)
+  }
+
+  const handleDeleteSelectedCityArray = (value) => {
+    let newArray = selectedCityArray.filter((data) => data !== value)
+    setSelectedCityArray(newArray)
   }
 
   //Első inditásnál engedélykérés a geo adatokhoz, ha nem, akkor az alapértelmezést tölti be
@@ -94,14 +102,16 @@ export const AppContextProvider = ({ children }) => {
     geoLocationValue,
     API_KEY,
     selectedCity,
+    setIsGeoAllowed,
     selectedCityArray,
+    handleGeoCity,
     handleSelectedCity,
     handleSelectedCityArray,
+    handleDeleteSelectedCityArray,
     handleActiveNavbar,
     handleCity,
     handleLang,
     handleUnit,
-    handleGeoCity,
   }
   return (
     <AppContext.Provider value={contextValue}>

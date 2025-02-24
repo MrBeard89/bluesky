@@ -20,8 +20,7 @@ import { FetchingError } from '../../components/FetchingError/FetchingError'
 import { LoadingSpinner } from '../../components/LoadingSpinner/LoadingSpinner'
 
 export const Home = () => {
-  const { geoLocationValue, isGeoAllowed, handleCity, API_KEY, city, lang, unit } =
-    useContext(AppContext)
+  const { geoLocationValue, handleGeoCity, API_KEY, city, lang, unit } = useContext(AppContext)
 
   //Decoder api fetch
   const {
@@ -31,8 +30,7 @@ export const Home = () => {
     isSuccess: decoderSuccess,
     isError: decoderError,
   } = useDecoderApi(geoLocationValue, API_KEY)
-
-  decoderSuccess ? handleCity(decoderData[0]?.name) : ''
+  decoderSuccess ? handleGeoCity(decoderData[0]?.name) : ''
 
   //Előjelzés api fetch
   const {

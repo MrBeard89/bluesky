@@ -1,20 +1,27 @@
 import React, { useContext, useState } from 'react'
 import { AppContext } from '../../context/AppContext'
-import { Box, Button, FormControl, TextField } from '@mui/material'
-import useFetchCity from '../../hooks/useFetchCity'
-import { LoadingSpinner } from '../../components/LoadingSpinner/LoadingSpinner'
-import { FetchingError } from '../../components/FetchingError/FetchingError'
+import { Box, FormControl } from '@mui/material'
+
+//Scss import
+import '../../styles/pages/Cities/Cities.scss'
+//Icon imports
+import { FaSearch } from 'react-icons/fa'
+import { TiDeleteOutline } from 'react-icons/ti'
+import { useNavigate } from 'react-router'
+import { useQueryClient } from '@tanstack/react-query'
+import { fetchWeather } from '../../hooks/useGetWeather'
 
 export const Cities = () => {
   const {
     API_KEY,
-    city,
     lang,
     unit,
-    selectedCity,
     selectedCityArray,
+    handleCity,
+    handleGeoCity,
     handleSelectedCity,
     handleSelectedCityArray,
+    handleDeleteSelectedCityArray,
   } = useContext(AppContext)
   const [cityValue, setCityValue] = useState('')
   const [isCity, setIsCity] = useState(true)
@@ -27,6 +34,11 @@ export const Cities = () => {
   }
 
   const fetchCity = async (API_KEY, cityValue) => {
+    if (cityValue === selectedCityArray.find((x) => x === cityValue)) {
+      setCityValue('')
+      alert(lang === 'hu' ? 'Már rákerestél erre a városra!' : 'You alreday search for this city!')
+      return
+    }
     try {
       const url = `https://api.openweathermap.org/data/2.5/forecast?q=${cityValue}&appid=${API_KEY}`
       const response = await fetch(url)
@@ -45,35 +57,73 @@ export const Cities = () => {
     e.target.value.length == 0 ? setIsCity(true) : ''
   }
 
+  const navigate = useNavigate()
+  const queryClient = useQueryClient()
+
+  const fetchAgain = async (value) => {
+    handleGeoCity('')
+    handleCity(value)
+    navigate('/home')
+    const data = await queryClient.fetchQuery({
+      queryKey: ['weather', value],
+      queryFn: () => fetchWeather(API_KEY, value, unit, lang),
+      enabled: !!value,
+    })
+    return data
+  }
+
   return (
-    <div className='cities_input_container'>
+    <div className='cities_wrapper'>
+      {/* Cities wrapper */}
+      <div className='title_wrapper'>
+        <h2 className='cities_title'>{lang === 'hu' ? 'Városaim' : 'My Cities'}</h2>
+      </div>
+
       <FormControl fullWidth>
-        <Box sx={{ display: 'flex', justifyContent: 'center', mt: '2rem' }}>
-          <TextField
-            id='outlined-basic'
-            variant='outlined'
-            sx={{ bgcolor: 'white', width: '80%' }}
-            placeholder='Search cities...'
+        <Box className='cities_input_container'>
+          <input
+            className='cities_input_field'
+            placeholder={lang === 'hu' ? 'Városok keresése' : 'Search cities...'}
             value={cityValue}
+            type='text'
             onChange={(e) => handleCityValue(e)}
           />
 
-          <Button onClick={() => fetchCity(API_KEY, cityValue)}>Search</Button>
+          <button className='cities_search_btn' onClick={() => fetchCity(API_KEY, cityValue)}>
+            <FaSearch className='cities_search_btn_icon' />
+          </button>
         </Box>
       </FormControl>
 
-      <Box className='cities_container'>
+      {/* Alert box */}
+      <Box className='cities_alert_container'>
         {cityValue.length == 0 ? (
-          <p>Start searching for cities</p>
+          <p className='search_for_cities'>
+            {lang === 'hu' ? 'Kezdj el városokat keresni...' : 'Start searching for cities...'}
+          </p>
         ) : isCity == false ? (
-          <p style={{ color: 'red' }}>City not found...</p>
+          <p className='not_found'>{lang === 'hu' ? 'Város nem található!' : 'City not found!'}</p>
         ) : (
-          ''
+          <p className='placeholder'></p>
         )}
       </Box>
-      <Box>
+
+      {/* Cities array component*/}
+      <Box className='cities_list_container'>
         {selectedCityArray.map((x, i) => {
-          return <Box key={i}>{x}</Box>
+          return (
+            <Box key={i} className='cities_list_wrapper'>
+              <p className='cities_list_element' onClick={() => fetchAgain(x)}>
+                {x}
+              </p>
+              <button
+                className='cities_list_element_btn'
+                onClick={() => handleDeleteSelectedCityArray(x)}
+              >
+                <TiDeleteOutline className='list_element_icon' />
+              </button>
+            </Box>
+          )
         })}
       </Box>
     </div>

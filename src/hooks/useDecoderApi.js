@@ -15,6 +15,7 @@ const useDecoderApi = (geoLocationValue, API_KEY) => {
   return useQuery({
     queryKey: ['decoded_location_name', geoLocationValue],
     queryFn: () => fetchDecoderApi(geoLocationValue, API_KEY),
+    enabled: !!geoLocationValue,
     //staleTime: 1200,
   })
 }

@@ -1,0 +1,57 @@
+@use '../../../sass/variables' as v;
+@forward '../../../sass/templates';
+
+//Main wrapper
+.settings_wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-top: 2rem;
+  margin-bottom: 8rem;
+
+  //Title
+  .settings_title_wrapper {
+    width: 100%;
+    .settings_title {
+      display: flex;
+      text-align: left;
+      margin-bottom: 2rem;
+      padding-left: 6vw;
+    }
+  }
+
+  //Options container
+  .settings_container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+    width: 100%;
+
+    //Options
+    .settings_container_option {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      gap: 0.8rem;
+      width: 90%;
+      background-color: v.$color_dark_blue;
+      height: 80px;
+      padding: 0.2rem;
+      border-radius: 1rem;
+      .settings_text {
+        width: 50px;
+        text-align: center;
+      }
+      .settings_container_switch {
+        transform: scale(1.2);
+      }
+    }
+  }
+
+  .teaser_container {
+    .teaser_text {
+      color: v.$color_grey;
+    }
+  }
+}
