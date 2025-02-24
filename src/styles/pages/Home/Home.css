@@ -39,7 +39,7 @@
   gap: 0.4rem;
   position: relative;
   width: 90%;
-  overflow-x: scroll;
+  justify-content: center;
   background-color: #202b3c;
   border-radius: 8px;
   padding: 1.2rem 0rem;
@@ -52,31 +52,38 @@
   color: #5d6976;
   font-weight: 700;
 }
-.home_container .home_details_wrapper .home_details_container .home_details_hours_container {
+.home_container .home_details_wrapper .home_details_container .home_details_hours_wrapper {
+  display: flex;
+  align-items: center;
+  width: 60%;
+  overflow-x: scroll;
+  background-color: #0b121e;
+  margin-top: 2rem;
+  border-radius: 1rem;
+}
+.home_container .home_details_wrapper .home_details_container .home_details_hours_wrapper .home_details_hours_container {
   display: flex;
   align-items: center;
   flex-direction: column;
   gap: 0.5rem;
-  padding-top: 2rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
+  padding: 1rem;
   width: 120px;
   height: fit-content;
   position: relative;
 }
-.home_container .home_details_wrapper .home_details_container .home_details_hours_container .details_date {
+.home_container .home_details_wrapper .home_details_container .home_details_hours_wrapper .home_details_hours_container .details_date {
   color: #5d6976;
   font-weight: 700;
   width: 80px;
   text-align: center;
 }
-.home_container .home_details_wrapper .home_details_container .home_details_hours_container .details_day_icon {
+.home_container .home_details_wrapper .home_details_container .home_details_hours_wrapper .home_details_hours_container .details_day_icon {
   font-size: 55px;
 }
-.home_container .home_details_wrapper .home_details_container .home_details_hours_container .details_night_icon {
+.home_container .home_details_wrapper .home_details_container .home_details_hours_wrapper .home_details_hours_container .details_night_icon {
   font-size: 55px;
 }
-.home_container .home_details_wrapper .home_details_container .home_details_hours_container .details_temp {
+.home_container .home_details_wrapper .home_details_container .home_details_hours_wrapper .home_details_hours_container .details_temp {
   font-weight: 700;
 }
 .home_container .home_more_data_wrapper {
@@ -191,4 +198,37 @@
 }
 .home_container .home_forecast_wrapper .home_forecast_container .home_forecast_element .forecast_max_min_value span {
   color: #5d6976;
+}
+
+@media only screen and (min-width: 768px) {
+  .home_container .home_details_hours_container {
+    font-size: 35px !important;
+    width: 200px !important;
+  }
+  .home_container .home_details_hours_container .details_date {
+    width: 180px !important;
+  }
+  .icon_container .data_container_icon {
+    font-size: 45px !important;
+  }
+  .data_container_title {
+    width: 150px;
+    font-size: 24px !important;
+    padding-top: 1rem !important;
+  }
+  .data_container_value {
+    font-size: 24px !important;
+  }
+  .home_forecast_element {
+    font-size: 24px !important;
+  }
+  .home_forecast_element .forecast_desc {
+    width: 200px !important;
+  }
+  .home_forecast_element .forecast_day_icon {
+    font-size: 35px !important;
+  }
+  .home_forecast_element .forecast_night_icon {
+    font-size: 35px !important;
+  }
 }/*# sourceMappingURL=Home.css.map */

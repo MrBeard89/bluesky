@@ -20,6 +20,8 @@
   gap: 2rem;
   align-items: center;
   width: 100%;
+  height: 100vh;
+  position: relative;
 }
 .settings_wrapper .settings_container .settings_container_option {
   display: flex;
@@ -41,4 +43,20 @@
 }
 .settings_wrapper .teaser_container .teaser_text {
   color: #5d6976;
+}
+.settings_wrapper .settings_footer {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  bottom: 0;
+}
+.settings_wrapper .settings_footer .footer_api_text {
+  color: #5d6976;
+  font-size: 14px;
+  text-align: center;
+}
+.settings_wrapper .settings_footer .footer_name {
+  color: #5d6976;
+  font-size: 14px;
+  text-align: center;
 }/*# sourceMappingURL=Settings.css.map */

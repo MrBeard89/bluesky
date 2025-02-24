@@ -8,8 +8,19 @@ import { Settings } from './pages/Settings/Settings'
 import { Cities } from './pages/Cities/Cities'
 import { AppContextProvider } from './context/AppContext'
 import { Navbar } from './components/Navbar/Navbar'
+import { useState } from 'react'
 
 function App() {
+  // const [theme, setTheme] = useState(localStorage.getItem('theme') || 'dark')
+
+  // const toggleTheme = () => {
+  //   theme === 'light' ? setTheme('dark') : setTheme('light')
+  // }
+
+  // useEffect(() => {
+  //   localStorage.setItem('theme', theme)
+  // }, [theme])
+
   return (
     <>
       <AppContextProvider>

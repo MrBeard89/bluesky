@@ -20,7 +20,8 @@ import { FetchingError } from '../../components/FetchingError/FetchingError'
 import { LoadingSpinner } from '../../components/LoadingSpinner/LoadingSpinner'
 
 export const Home = () => {
-  const { geoLocationValue, handleGeoCity, API_KEY, city, lang, unit } = useContext(AppContext)
+  const { geoLocationValue, handleCity, handleGeoCity, API_KEY, city, lang, unit } =
+    useContext(AppContext)
 
   //Decoder api fetch
   const {
@@ -30,7 +31,8 @@ export const Home = () => {
     isSuccess: decoderSuccess,
     isError: decoderError,
   } = useDecoderApi(geoLocationValue, API_KEY)
-  decoderSuccess ? handleGeoCity(decoderData[0]?.name) : ''
+
+  // decoderSuccess ? handleCity(decoderData[0]?.name) : ''
 
   //Előjelzés api fetch
   const {
@@ -103,24 +105,26 @@ export const Home = () => {
               <p className='home_details_title'>
                 {lang == 'hu' ? 'Mai Időjárás' : "Today's weather"}{' '}
               </p>
-              {filteredTodayWeatherArr.map((day, i) => {
-                let DinamycDetailsDayIcons = DayIcons[`o${day.weatherIcon}`]
-                let DinamycDetailsNightIcons = NightIcons[`o${day.weatherIcon}`]
-                return (
-                  <div key={i} className='home_details_hours_container'>
-                    <p className='details_date'>{formatTime(day.date)}</p>
-                    {day.weatherIcon.slice(-1) === 'd' ? (
-                      <DinamycDetailsDayIcons className='details_day_icon' />
-                    ) : (
-                      <DinamycDetailsNightIcons className='details_night_icon' />
-                    )}
-                    <p className='details_temp'>
-                      {Math.floor(day.avgTemp)} {unit === 'metric' ? '°C' : '°F'}
-                    </p>
-                    {/* <hr className='details_decor_line' /> */}
-                  </div>
-                )
-              })}
+              <div className='home_details_hours_wrapper'>
+                {filteredTodayWeatherArr.map((day, i) => {
+                  let DinamycDetailsDayIcons = DayIcons[`o${day.weatherIcon}`]
+                  let DinamycDetailsNightIcons = NightIcons[`o${day.weatherIcon}`]
+                  return (
+                    <div key={i} className='home_details_hours_container'>
+                      <p className='details_date'>{formatTime(day.date)}</p>
+                      {day.weatherIcon.slice(-1) === 'd' ? (
+                        <DinamycDetailsDayIcons className='details_day_icon' />
+                      ) : (
+                        <DinamycDetailsNightIcons className='details_night_icon' />
+                      )}
+                      <p className='details_temp'>
+                        {Math.floor(day.avgTemp)} {unit === 'metric' ? '°C' : '°F'}
+                      </p>
+                      {/* <hr className='details_decor_line' /> */}
+                    </div>
+                  )
+                })}
+              </div>
             </div>
           </div>
 

@@ -126,11 +126,25 @@ export const Settings = () => {
           <p className='settings_text'>{lang === 'hu' ? 'Fahren.' : 'Fahren.'}</p>
         </div>
 
+        {/* Teaser container */}
         <div className='teaser_container'>
           <p className='teaser_text'>
             {lang === 'hu'
               ? 'További beállítások és funkciók hamarosan ...'
               : 'More options and features coming soon ...'}
+          </p>
+        </div>
+
+        <div className='settings_footer'>
+          <p className='footer_api_text'>
+            {lang === 'hu'
+              ? 'Létrejött az openweathermap.org apival'
+              : 'Powered by openweathermap.org api'}
+          </p>
+          <p className='footer_name'>
+            {lang === 'hu'
+              ? 'Programozta és a designt készitette: Kovács Norbert'
+              : 'Programmed and designed by: Norbert Kovács'}
           </p>
         </div>
       </div>

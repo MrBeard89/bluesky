@@ -33,10 +33,16 @@ export const Cities = () => {
     setIsCity(true)
   }
 
+  //Város keréshez
   const fetchCity = async (API_KEY, cityValue) => {
     if (cityValue === selectedCityArray.find((x) => x === cityValue)) {
       setCityValue('')
       alert(lang === 'hu' ? 'Már rákerestél erre a városra!' : 'You alreday search for this city!')
+      return
+    }
+
+    if (cityValue.length === 0) {
+      alert(lang === 'hu' ? 'Adj meg egy város nevet!' : 'You have to type a valid cityname!')
       return
     }
     try {
@@ -60,6 +66,7 @@ export const Cities = () => {
   const navigate = useNavigate()
   const queryClient = useQueryClient()
 
+  //Keresés utáni fetch
   const fetchAgain = async (value) => {
     handleGeoCity('')
     handleCity(value)
@@ -72,6 +79,22 @@ export const Cities = () => {
     return data
   }
 
+  //Enter funkció
+  let cityInput = document.getElementById('cityInput')
+
+  cityInput?.addEventListener(
+    'keypress',
+    (e) => {
+      if (e.key === 'Enter') {
+        e.preventDefault()
+        document.getElementById('my_Btn').click()
+        setCityValue('')
+        e.stopImmediatePropagation()
+      }
+    },
+    { once: true }
+  )
+
   return (
     <div className='cities_wrapper'>
       {/* Cities wrapper */}
@@ -79,9 +102,10 @@ export const Cities = () => {
         <h2 className='cities_title'>{lang === 'hu' ? 'Városaim' : 'My Cities'}</h2>
       </div>
 
-      <FormControl fullWidth>
+      <FormControl fullWidth className='cities_input_wrapper'>
         <Box className='cities_input_container'>
           <input
+            id='cityInput'
             className='cities_input_field'
             placeholder={lang === 'hu' ? 'Városok keresése' : 'Search cities...'}
             value={cityValue}
@@ -89,42 +113,52 @@ export const Cities = () => {
             onChange={(e) => handleCityValue(e)}
           />
 
-          <button className='cities_search_btn' onClick={() => fetchCity(API_KEY, cityValue)}>
+          <button
+            id='my_Btn'
+            className='cities_search_btn'
+            onClick={() => fetchCity(API_KEY, cityValue)}
+          >
             <FaSearch className='cities_search_btn_icon' />
           </button>
         </Box>
-      </FormControl>
 
-      {/* Alert box */}
-      <Box className='cities_alert_container'>
-        {cityValue.length == 0 ? (
-          <p className='search_for_cities'>
-            {lang === 'hu' ? 'Kezdj el városokat keresni...' : 'Start searching for cities...'}
-          </p>
-        ) : isCity == false ? (
-          <p className='not_found'>{lang === 'hu' ? 'Város nem található!' : 'City not found!'}</p>
-        ) : (
-          <p className='placeholder'></p>
-        )}
-      </Box>
+        {/* Alert box */}
+        <Box className='cities_alert_container'>
+          {cityValue.length == 0 ? (
+            <p className='search_for_cities'>
+              {lang === 'hu' ? 'Kezdj el városokat keresni...' : 'Start searching for cities...'}
+            </p>
+          ) : isCity == false ? (
+            <p className='not_found'>
+              {lang === 'hu' ? 'Város nem található!' : 'City not found!'}
+            </p>
+          ) : (
+            <p className='placeholder'></p>
+          )}
+        </Box>
+      </FormControl>
 
       {/* Cities array component*/}
       <Box className='cities_list_container'>
-        {selectedCityArray.map((x, i) => {
-          return (
-            <Box key={i} className='cities_list_wrapper'>
-              <p className='cities_list_element' onClick={() => fetchAgain(x)}>
-                {x}
-              </p>
-              <button
-                className='cities_list_element_btn'
-                onClick={() => handleDeleteSelectedCityArray(x)}
-              >
-                <TiDeleteOutline className='list_element_icon' />
-              </button>
-            </Box>
-          )
-        })}
+        {selectedCityArray.length === 0 ? (
+          <p>{lang === 'hu' ? 'Nincsenek városaid!' : 'You not have any cities!'}</p>
+        ) : (
+          selectedCityArray.map((x, i) => {
+            return (
+              <Box key={i} className='cities_list_wrapper'>
+                <p className='cities_list_element' onClick={() => fetchAgain(x)}>
+                  {x}
+                </p>
+                <button
+                  className='cities_list_element_btn'
+                  onClick={() => handleDeleteSelectedCityArray(x)}
+                >
+                  <TiDeleteOutline className='list_element_icon' />
+                </button>
+              </Box>
+            )
+          })
+        )}
       </Box>
     </div>
   )

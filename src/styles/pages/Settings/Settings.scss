@@ -27,6 +27,8 @@
     gap: 2rem;
     align-items: center;
     width: 100%;
+    height: 100vh;
+    position: relative;
 
     //Options
     .settings_container_option {
@@ -52,6 +54,26 @@
   .teaser_container {
     .teaser_text {
       color: v.$color_grey;
+    }
+  }
+
+  //Settings footer
+  .settings_footer {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    bottom: 0;
+
+    .footer_api_text {
+      color: v.$color_grey;
+      font-size: v.$font_size_sm;
+      text-align: center;
+    }
+
+    .footer_name {
+      color: v.$color_grey;
+      font-size: v.$font_size_sm;
+      text-align: center;
     }
   }
 }

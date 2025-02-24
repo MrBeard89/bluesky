@@ -4,6 +4,7 @@
   width: 100%;
   margin-top: 2rem;
   margin-bottom: 8rem;
+  position: relative;
 }
 .cities_wrapper .title_wrapper {
   width: 100%;
@@ -14,24 +15,29 @@
   margin-bottom: 2rem;
   padding-left: 6vw;
 }
-.cities_wrapper .cities_input_container {
+.cities_wrapper .cities_input_wrapper {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+.cities_wrapper .cities_input_wrapper .cities_input_container {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  margin-bottom: 1rem;
+  margin-bottom: 0.2rem;
 }
-.cities_wrapper .cities_input_container .cities_input_field {
+.cities_wrapper .cities_input_wrapper .cities_input_container .cities_input_field {
   width: 70%;
-  height: 2rem;
+  height: 3rem;
+  font-size: 18px;
   border-radius: 1rem;
   background-color: #2e3d56;
   color: #d5dbe1;
-  font-weight: 700;
   border: none;
   outline: none;
   padding-left: 0.4rem;
 }
-.cities_wrapper .cities_input_container .cities_search_btn {
+.cities_wrapper .cities_input_wrapper .cities_input_container .cities_search_btn {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -42,26 +48,29 @@
   background-color: #2e3d56;
   border: none;
 }
-.cities_wrapper .cities_input_container .cities_search_btn:hover {
+.cities_wrapper .cities_input_wrapper .cities_input_container .cities_search_btn:hover {
   color: #2e3d56;
   background-color: #d5dbe1;
   cursor: pointer;
 }
-.cities_wrapper .cities_input_container .cities_search_btn .cities_search_btn_icon {
+.cities_wrapper .cities_input_wrapper .cities_input_container .cities_search_btn .cities_search_btn_icon {
   font-size: 20px;
 }
-.cities_wrapper .cities_alert_container {
+.cities_wrapper .cities_input_wrapper .cities_alert_container {
   width: 100%;
-  text-align: center;
+  text-align: left;
   margin-bottom: 4rem;
+  position: relative;
 }
-.cities_wrapper .cities_alert_container .search_for_cities {
+.cities_wrapper .cities_input_wrapper .cities_alert_container .search_for_cities {
   color: #5d6976;
+  padding-left: 7vw;
 }
-.cities_wrapper .cities_alert_container .not_found {
+.cities_wrapper .cities_input_wrapper .cities_alert_container .not_found {
   color: #ff6f61;
+  padding-left: 7vw;
 }
-.cities_wrapper .cities_alert_container .placeholder {
+.cities_wrapper .cities_input_wrapper .cities_alert_container .placeholder {
   height: 21px;
 }
 .cities_wrapper .cities_list_container {
@@ -89,6 +98,10 @@
   background-color: #2e3d56;
   border-radius: 1rem;
   font-size: 35px;
+}
+.cities_wrapper .cities_list_container .cities_list_wrapper .cities_list_element:hover {
+  background-color: #202b3c;
+  cursor: pointer;
 }
 .cities_wrapper .cities_list_container .cities_list_wrapper .cities_list_element_btn {
   display: flex;

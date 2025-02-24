@@ -13,17 +13,14 @@ export const AppContextProvider = ({ children }) => {
   const [selectedCityArray, setSelectedCityArray] = useState([])
   const [isGeoAllowed, setIsGeoAllowed] = useState(false)
   const [geoLocationCity, setGeoLocationCity] = useState('')
-  const [city, setCity] = useState(
-    isGeoAllowed ? geoLocationCity : selectedCity ? selectedCity : 'Budapest'
-  ) //alapértelmezés Budapest
-  const [lang, setLang] = useState('en')
+  const [city, setCity] = useState(selectedCity ? selectedCity : 'Budapest') //alapértelmezés Budapest
+  const [lang, setLang] = useState('hu')
 
   const [unit, setUnit] = useState('metric')
   const [geoLocationValue, setGeoLocationValue] = useState({
     latitude: 47.497913,
     longitude: 19.040236,
   }) //alapértelmezés Budapest
-  console.log(geoLocationCity, isGeoAllowed)
 
   /////////////////////////////////////////
   //Geo adatok lekérdezése function
@@ -117,7 +114,7 @@ export const AppContextProvider = ({ children }) => {
     <AppContext.Provider value={contextValue}>
       <QueryClientProvider client={queryClient}>
         {children}
-        <ReactQueryDevtools initialIsOpen={false} />
+        {/* <ReactQueryDevtools initialIsOpen={false} /> */}
       </QueryClientProvider>
     </AppContext.Provider>
   )

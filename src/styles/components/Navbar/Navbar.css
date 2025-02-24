@@ -32,4 +32,17 @@
   color: #d5dbe1;
   border-radius: 5px;
   background-color: #2e3d56;
+}
+
+@media only screen and (min-width: 768px) {
+  .navbar_link_container {
+    width: 70% !important;
+    max-width: 700px;
+  }
+  .navbar_link_container .navbar_link {
+    width: auto;
+  }
+  .navbar_link_container .navbar_link .navbar_link_icon {
+    padding: 0rem 4rem !important;
+  }
 }/*# sourceMappingURL=Navbar.css.map */
