@@ -133,6 +133,29 @@
         font-weight: v.$font_weight_bold;
       }
 
+      .home_more_data_link {
+        position: absolute;
+        top: 0.5rem;
+        right: 1rem;
+        padding: 0.5rem;
+        background-color: v.$color_dark_bg;
+        font-weight: v.$font_weight_bold;
+        border-radius: 0.5rem;
+        border: none;
+
+        &:hover {
+          background-color: v.$color_light_blue;
+          color: v.$color_white;
+        }
+
+        a {
+          color: v.$color_grey;
+          padding: 0.5rem;
+          font-size: v.$font_size_xs;
+          text-decoration: none;
+        }
+      }
+
       .home_more_data_info_wrapper {
         display: flex;
         flex-direction: column;
@@ -245,6 +268,13 @@
       width: 200px !important;
       .details_date {
         width: 180px !important;
+      }
+    }
+
+    .home_more_data_link {
+      a {
+        padding: 1rem !important;
+        font-size: v.$font_size_md !important;
       }
     }
   }

@@ -11,4 +11,27 @@ body {
   background-color: #0b121e;
   color: #d5dbe1;
   position: relative;
+}
+
+/* Firefox */
+html {
+  scrollbar-color: #5773a3 #0c1e3a;
+  scrollbar-width: auto;
+  scrollbar-arrow-color: #5773a3;
+  scroll-behavior: smooth;
+  scrollbar-darkshadow-color: #2e3d56;
+}
+
+/* WebKit and Chromiums */
+::-webkit-scrollbar {
+  width: 15px;
+  height: 8px;
+  background-color: #0c1e3a;
+  color: #5773a3;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #0c1e3a;
+  color: #5773a3;
+  border-radius: 5px;
 }/*# sourceMappingURL=App.css.map */

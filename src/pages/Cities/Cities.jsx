@@ -89,7 +89,7 @@ export const Cities = () => {
       if (e.key === 'Enter') {
         e.preventDefault()
         document.getElementById('my_Btn').click()
-        setCityValue('')
+        //setCityValue('')
         e.stopImmediatePropagation()
       }
     },

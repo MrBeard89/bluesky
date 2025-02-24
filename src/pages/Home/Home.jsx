@@ -121,7 +121,15 @@ export const Home = () => {
           <div className='home_more_data_wrapper'>
             <div className='home_more_data_container'>
               <p className='home_more_data_title'>{lang == 'hu' ? 'Körülmények' : 'Conditions'}</p>
-
+              <button className='home_more_data_link'>
+                <a
+                  href={`https://www.idokep.hu/idojaras/${city}`}
+                  rel='noreferrer noopener'
+                  target='_blank'
+                >
+                  {lang === 'hu' ? 'Több info' : 'See more'}
+                </a>
+              </button>
               <div className='home_more_data_info_wrapper home_more_part_1'>
                 {/* Valós érzet */}
                 <div className='data_info_container'>

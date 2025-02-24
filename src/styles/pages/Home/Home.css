@@ -109,6 +109,26 @@
   color: #5d6976;
   font-weight: 700;
 }
+.home_container .home_more_data_wrapper .home_more_data_container .home_more_data_link {
+  position: absolute;
+  top: 0.5rem;
+  right: 1rem;
+  padding: 0.5rem;
+  background-color: #0b121e;
+  font-weight: 700;
+  border-radius: 0.5rem;
+  border: none;
+}
+.home_container .home_more_data_wrapper .home_more_data_container .home_more_data_link:hover {
+  background-color: #899dc0;
+  color: #d5dbe1;
+}
+.home_container .home_more_data_wrapper .home_more_data_container .home_more_data_link a {
+  color: #5d6976;
+  padding: 0.5rem;
+  font-size: 12px;
+  text-decoration: none;
+}
 .home_container .home_more_data_wrapper .home_more_data_container .home_more_data_info_wrapper {
   display: flex;
   flex-direction: column;
@@ -207,6 +227,10 @@
   }
   .home_container .home_details_hours_container .details_date {
     width: 180px !important;
+  }
+  .home_container .home_more_data_link a {
+    padding: 1rem !important;
+    font-size: 16px !important;
   }
   .icon_container .data_container_icon {
     font-size: 45px !important;
