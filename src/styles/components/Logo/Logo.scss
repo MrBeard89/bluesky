@@ -1,0 +1,18 @@
+@use '../../../sass/variables' as v;
+
+.logo_container {
+  position: fixed;
+  top: -4rem;
+  left: -4rem;
+  z-index: 15;
+  background-color: v.$color_dark_blue_hover;
+  padding: 3rem;
+  border-radius: 50%;
+
+  #logo {
+    position: relative;
+    bottom: -1.5rem;
+    right: -1.5rem;
+    font-size: v.$font_size_xxxl;
+  }
+}

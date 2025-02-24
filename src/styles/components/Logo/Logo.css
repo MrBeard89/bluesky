@@ -1,0 +1,15 @@
+.logo_container {
+  position: fixed;
+  top: -4rem;
+  left: -4rem;
+  z-index: 15;
+  background-color: #2e3d56;
+  padding: 3rem;
+  border-radius: 50%;
+}
+.logo_container #logo {
+  position: relative;
+  bottom: -1.5rem;
+  right: -1.5rem;
+  font-size: 35px;
+}/*# sourceMappingURL=Logo.css.map */

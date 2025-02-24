@@ -23,17 +23,6 @@ export const Home = () => {
   const { geoLocationValue, handleCity, handleGeoCity, API_KEY, city, lang, unit } =
     useContext(AppContext)
 
-  //Decoder api fetch
-  const {
-    data: decoderData,
-    error: decoderErrorData,
-    isLoading: decoderLoading,
-    isSuccess: decoderSuccess,
-    isError: decoderError,
-  } = useDecoderApi(geoLocationValue, API_KEY)
-
-  // decoderSuccess ? handleCity(decoderData[0]?.name) : ''
-
   //Előjelzés api fetch
   const {
     data: weatherData,
@@ -43,11 +32,11 @@ export const Home = () => {
     isError: weatherError,
   } = useGetWeather(API_KEY, city, unit, lang)
 
-  if (decoderLoading || weatherLoading) {
+  if (weatherLoading) {
     return <LoadingSpinner />
   }
-  if (decoderError || weatherError) {
-    console.log(weatherErrorData, decoderErrorData)
+  if (weatherError) {
+    console.log(weatherErrorData)
     return <FetchingError />
   }
 

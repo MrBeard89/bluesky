@@ -13,7 +13,7 @@ export const AppContextProvider = ({ children }) => {
   const [selectedCityArray, setSelectedCityArray] = useState([])
   const [isGeoAllowed, setIsGeoAllowed] = useState(false)
   const [geoLocationCity, setGeoLocationCity] = useState('')
-  const [city, setCity] = useState(selectedCity ? selectedCity : 'Budapest') //alapértelmezés Budapest
+  const [city, setCity] = useState('Budapest') //alapértelmezés Budapest
   const [lang, setLang] = useState('hu')
 
   const [unit, setUnit] = useState('metric')

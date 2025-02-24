@@ -45,6 +45,7 @@ export const Cities = () => {
       alert(lang === 'hu' ? 'Adj meg egy város nevet!' : 'You have to type a valid cityname!')
       return
     }
+
     try {
       const url = `https://api.openweathermap.org/data/2.5/forecast?q=${cityValue}&appid=${API_KEY}`
       const response = await fetch(url)
