@@ -48,10 +48,16 @@
 
 👉 **Megtekintés github pages linken keresztül** vagy,
 
-👉 ** Repo fejléc jobb oldalán, Code gomb megnyomása.
-👉 ** Felugró ablak alján **"Download Zip"** gomb megnyomása.
-👉 ** A letöltött tömörített fájlt csomagoljuk ki.
-👉 ** A kicsomagolás után a főkönyvtár mappáját(amiben src stb található), töltsük be VScodeal.
-👉 ** Konzolban **"npm i"** majd Enter.
-👉 ** Indításhoz pedig konzolba írjuk be hogy **"npm run dev"**.
-👉 \*\* Böngészőbe átírányit a VScode, majd láthatjuk az appot.
+👉 Repo fejléc jobb oldalán, Code gomb megnyomása.
+
+👉 Felugró ablak alján "Download Zip" gomb megnyomása.
+
+👉 A letöltött tömörített fájlt csomagoljuk ki.
+
+👉 A kicsomagolás után a főkönyvtár mappáját(amiben src stb található), töltsük be VScodeal.
+
+👉 Konzolban "npm i" majd Enter.
+
+👉 Indításhoz pedig konzolba írjuk be hogy "npm run dev".
+
+👉 Böngészőbe átírányit a VScode, majd láthatjuk az appot.
