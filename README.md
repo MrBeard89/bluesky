@@ -63,3 +63,5 @@
 👉 Indításhoz pedig konzolba írjuk be hogy "npm run dev".
 
 👉 Böngészőbe átírányit a VScode, majd láthatjuk az appot.
+
+👉 UI:Github pagesben a NotFound componens nem működik, lokálisan igen.
