@@ -162,7 +162,7 @@
         align-items: center;
         gap: 1rem;
         width: 100%;
-        padding: 2rem 1rem 1rem 1rem;
+        padding: 2rem 0.5rem 1rem 0.5rem;
 
         .data_info_container {
           display: flex;
@@ -170,6 +170,7 @@
           gap: 0.5rem;
           width: 130px;
           max-width: 150px;
+          padding: 0.2rem;
 
           .icon_container {
             display: flex;
@@ -188,7 +189,7 @@
             text-align: left;
 
             .data_container_title {
-              font-size: v.$font_size_lg;
+              font-size: v.$font_size_md;
               padding-top: 0.4rem;
               color: v.$color_grey;
             }
@@ -231,13 +232,14 @@
       .home_forecast_element {
         display: flex;
         justify-content: space-between;
+        gap: 0.8rem;
         align-items: center;
         padding: 1rem;
 
         .forecast_date {
           color: v.$color_grey;
           font-weight: v.$font_weight_bold;
-          width: 100px;
+          width: 130px;
         }
         .forecast_desc {
           width: 125px;
@@ -249,6 +251,8 @@
           font-size: v.$font_size_xxl;
         }
         .forecast_max_min_value {
+          text-align: right;
+          width: 80px;
           font-weight: v.$font_weight_bold;
           span {
             color: v.$color_grey;
