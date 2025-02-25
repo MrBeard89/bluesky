@@ -11,7 +11,7 @@ export const FetchingError = () => {
   const queryClient = useQueryClient()
 
   const fetchAgain = async () => {
-    navigate('/home')
+    navigate('/bluesky/home')
     const data = await queryClient.fetchQuery({
       queryKey: ['weather', city],
       queryFn: () => fetchWeather(API_KEY, city, unit, lang),

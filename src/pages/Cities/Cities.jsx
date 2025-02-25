@@ -74,7 +74,7 @@ export const Cities = () => {
   const fetchAgain = async (value) => {
     handleGeoCity('')
     handleCity(value)
-    navigate('/home')
+    navigate('/bluesky/home')
     const data = await queryClient.fetchQuery({
       queryKey: ['weather', value],
       queryFn: () => fetchWeather(API_KEY, value, unit, lang),
