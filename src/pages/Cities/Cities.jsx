@@ -36,7 +36,6 @@ export const Cities = () => {
   //Város keréshez
   const fetchCity = async (API_KEY, cityValue) => {
     if (!isNaN(cityValue) && cityValue.length !== 0) {
-      console.log(cityValue)
       alert(
         lang === 'hu' ? 'Ne használj számokat a kereséshez!' : 'Do not use numbers to the search!'
       )
@@ -64,7 +63,7 @@ export const Cities = () => {
   }
 
   const handleCityValue = (e) => {
-    setCityValue(e.target.value)
+    setCityValue(e.target.value.charAt(0).toUpperCase() + e.target.value.slice(1))
     e.target.value.length == 0 ? setIsCity(true) : ''
   }
 
