@@ -18,11 +18,11 @@ function App() {
           <Logo />
           <Navbar />
           <Routes>
-            <Route path='/' element={<Home />} />
-            <Route path='/home' element={<Home />} />
-            <Route path='/cities' element={<Cities />} />
-            <Route path='/settings' element={<Settings />} />
-            <Route path='*' element={<NotFound />} />
+            <Route path='/bluesky/' element={<Home />} />
+            <Route path='/bluesky/home' element={<Home />} />
+            <Route path='/bluesky/cities' element={<Cities />} />
+            <Route path='/bluesky/settings' element={<Settings />} />
+            <Route path='/bluesky/*' element={<NotFound />} />
           </Routes>
         </BrowserRouter>
       </AppContextProvider>
