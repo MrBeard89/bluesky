@@ -48,6 +48,8 @@
 
 👉 **Megtekintés github pages linken keresztül** vagy,
 
+👉 <a href="https://mrbeard89.github.io/bluesky/">https://mrbeard89.github.io/bluesky/</a>
+
 👉 Repo fejléc jobb oldalán, Code gomb megnyomása.
 
 👉 Felugró ablak alján "Download Zip" gomb megnyomása.
