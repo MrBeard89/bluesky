@@ -1,30 +1,57 @@
 <div align="center">
 <a>
-      <img src="https://res.cloudinary.com/dz209s6jk/image/upload/v1634565177/Challenges/wudjsbv8g93aarlhvbud.jpg" alt="Project Banner" width="550px"/>
+      <img src="https://i.ibb.co/7tJP6Z2R/Ke-pernyo-foto-2025-02-25-10-31-24.png" alt="Project Banner" width="550px"/>
 </a>
-  <h3 align="center">Bluesky Weather app</h3>
+  <h3 align="center">Bluesky Időjárás app</h3>
 
 </div>
 
 ## <a name="tech-stack">⚙️ Tech Stack</a>
 
 - React
+- React Context API - Client state management
 - Material UI
 - React Router
 - MUI - Emotion
-- React Query /Tanstack/
+- React Query /Tanstack/ - Server state management
 - React Icons könyvtár
 - Sass - Scss
 - Vite
 
-## <a name="features">🔋 Features</a>
+## <a name="features">🔋 Főbb tulajdonságok</a>
 
-👉 **Visually Appealing UI/UX Design**: User friendly design,different layouts on different screen sizes.
+👉 **Mobile first szemlélet**: Mobil nézettől a monitor méretekig.
 
-👉 **Mobile/Tablet Design**: Mobile and Tablet layout, optimized.
+👉 **Reszponzív design**: Minden képernyőn jól kinéző design.
 
-👉 **JS heavy API approuch**: Using JSON file to get dinamic data.
+👉 **3 képernyős setup**: Home, Városok, Beállítások menüpontok.
 
-## <a name="toughts">📝 Comments</a>
+👉 **Városok alapján keresés**: 2. képernyőn input mezőbe beirt városnév szerinti keresés.
 
-👉 Really enjoyed this one, it was not easy, but at the end i think i managed it well.Go check out the live demo ! Have a good day !
+👉 **Automata GEO lokáció(beta)**: Az app elindulásnál megkérdezi a usert hogy engedélyezi e hogy hozzáférjen a GEO adatokhoz.Egyenlőre béta fázisban.
+
+👉 **Beállítások menüpont**: Itt betudjuk állítani a nyelvet, illetve azt, hogy celsius vagy fahrenheitben szeretnénk-e a hőmérsékletett megjeleniteni.
+
+👉 **Város kártyák elmentése**: A már keresett városok mentése listaként.
+
+👉 **Város szerinti időjárás adatok megjelenitése**: 2. képernyőn kártyára kattintva , adott város adatok betöltése API ból az 1. képernyőn.
+
+👉 **Időjárás adatok**: Mai időjárás 3 óránként, Részletek(szélsebesség,pártartalom,tengerszint magasság,valós érzet), 5napos előrejelzés.
+
+👉 **Nappali/Éjszakai ikonok**: Napszaknak megfelelő ikonok.
+
+👉 **Beállitások szerinti újrahivás + render**: Beállitások utáni azonnali újrahivás + render a háttérben, react query használatával.
+
+👉 **Automata újrahivás**: Ha a cachelt adat elavultá válik, újrahívás történik(React query). 5 min.
+
+## <a name="toughts">📝 Telepítés</a>
+
+👉 **Megtekintés github pages linken keresztül** vagy,
+
+👉 ** Repo fejléc jobb oldalán, Code gomb megnyomása.
+👉 ** Felugró ablak alján **"Download Zip"** gomb megnyomása.
+👉 ** A letöltött tömörített fájlt csomagoljuk ki.
+👉 ** A kicsomagolás után a főkönyvtár mappáját(amiben src stb található), töltsük be VScodeal.
+👉 ** Konzolban **"npm i"** majd Enter.
+👉 ** Indításhoz pedig konzolba írjuk be hogy **"npm run dev"**.
+👉 \*\* Böngészőbe átírányit a VScode, majd láthatjuk az appot.

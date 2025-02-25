@@ -92,7 +92,7 @@ const useGetWeather = (API_KEY, city, unit, lang) => {
     queryKey: ['weather', city, lang],
     queryFn: () => fetchWeather(API_KEY, city, unit, lang),
     enabled: !!city, //only runs when the city is provided
-    //staleTime: 1200,
+    staleTime: 5 * 60 * 1000, // 5 minutes
   })
 }
 
