@@ -128,6 +128,7 @@
         background-color: v.$color_dark_blue_hover;
         border-radius: 1rem;
         font-size: v.$font_size_xxxl;
+        overflow: auto;
 
         &:hover {
           background-color: v.$color_dark_blue;
