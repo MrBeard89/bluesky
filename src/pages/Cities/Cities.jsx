@@ -35,14 +35,18 @@ export const Cities = () => {
 
   //Város keréshez
   const fetchCity = async (API_KEY, cityValue) => {
-    if (cityValue === selectedCityArray.find((x) => x === cityValue)) {
+    if (!isNaN(cityValue) && cityValue.length !== 0) {
+      console.log(cityValue)
+      alert(
+        lang === 'hu' ? 'Ne használj számokat a kereséshez!' : 'Do not use numbers to the search!'
+      )
+      return
+    } else if (cityValue.length === 0) {
+      alert(lang === 'hu' ? 'Adj meg egy város nevet!' : 'You have to type a valid cityname!')
+      return
+    } else if (cityValue === selectedCityArray.find((x) => x === cityValue)) {
       setCityValue('')
       alert(lang === 'hu' ? 'Már rákerestél erre a városra!' : 'You alreday search for this city!')
-      return
-    }
-
-    if (cityValue.length === 0) {
-      alert(lang === 'hu' ? 'Adj meg egy város nevet!' : 'You have to type a valid cityname!')
       return
     }
 
@@ -124,18 +128,20 @@ export const Cities = () => {
         </Box>
 
         {/* Alert box */}
-        <Box className='cities_alert_container'>
-          {cityValue.length == 0 ? (
-            <p className='search_for_cities'>
-              {lang === 'hu' ? 'Kezdj el városokat keresni...' : 'Start searching for cities...'}
-            </p>
-          ) : isCity == false ? (
-            <p className='not_found'>
-              {lang === 'hu' ? 'Város nem található!' : 'City not found!'}
-            </p>
-          ) : (
-            <p className='placeholder'></p>
-          )}
+        <Box className='cities_alert_wrapper'>
+          <Box className='cities_alert_container'>
+            {cityValue.length == 0 ? (
+              <p className='search_for_cities'>
+                {lang === 'hu' ? 'Kezdj el városokat keresni...' : 'Start searching for cities...'}
+              </p>
+            ) : isCity == false ? (
+              <p className='not_found'>
+                {lang === 'hu' ? 'Város nem található!' : 'City not found!'}
+              </p>
+            ) : (
+              <p className='placeholder'></p>
+            )}
+          </Box>
         </Box>
       </FormControl>
 

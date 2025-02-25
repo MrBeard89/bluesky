@@ -221,6 +221,11 @@
 }
 
 @media only screen and (min-width: 768px) {
+  .home_container .home_details_container,
+  .home_container .home_more_data_container,
+  .home_container .home_forecast_container {
+    max-width: 1400px;
+  }
   .home_container .home_details_hours_container {
     font-size: 35px !important;
     width: 200px !important;

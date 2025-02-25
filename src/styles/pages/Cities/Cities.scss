@@ -6,7 +6,7 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  margin-top: 2rem;
+  margin-top: 4rem;
   margin-bottom: 8rem;
   position: relative;
 
@@ -16,7 +16,6 @@
       display: flex;
       text-align: left;
       margin-bottom: 2rem;
-
       padding-left: 6vw;
     }
   }
@@ -26,6 +25,8 @@
     display: flex;
     flex-direction: column;
     position: relative;
+    width: 100%;
+    align-items: center;
 
     //Cities input container
     .cities_input_container {
@@ -33,6 +34,7 @@
       justify-content: space-around;
       align-items: center;
       margin-bottom: 0.2rem;
+      width: 100%;
 
       .cities_input_field {
         width: 70%;
@@ -69,25 +71,33 @@
       }
     }
 
-    //Cities alert box
-    .cities_alert_container {
-      width: 100%;
-      text-align: left;
-      margin-bottom: 4rem;
+    .cities_alert_wrapper {
+      display: flex;
+      flex-direction: column;
       position: relative;
+      width: 100%;
+      align-items: center;
 
-      .search_for_cities {
-        color: v.$color_grey;
-        padding-left: 7vw;
-      }
+      //Cities alert box
+      .cities_alert_container {
+        width: 100%;
+        text-align: left;
+        margin-bottom: 4rem;
+        position: relative;
 
-      .not_found {
-        color: v.$color_red;
-        padding-left: 7vw;
-      }
+        .search_for_cities {
+          color: v.$color_grey;
+          padding-left: 6%;
+        }
 
-      .placeholder {
-        height: 21px;
+        .not_found {
+          color: v.$color_red;
+          padding-left: 6%;
+        }
+
+        .placeholder {
+          height: 21px;
+        }
       }
     }
   }
@@ -146,5 +156,22 @@
         }
       }
     }
+  }
+}
+
+//Media Queries
+
+@media only screen and (min-width: 768px) {
+  .cities_input_container,
+  .cities_alert_container {
+    max-width: 1400px !important;
+    .search_for_cities,
+    .not_found {
+      padding-left: 7% !important;
+    }
+  }
+
+  .cities_list_wrapper {
+    max-width: 1400px !important;
   }
 }
