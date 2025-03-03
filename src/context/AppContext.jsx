@@ -1,5 +1,3 @@
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import { createContext, useEffect, useState } from 'react'
 
 export const AppContext = createContext(null) // Create a context object
@@ -54,9 +52,6 @@ export const AppContextProvider = ({ children }) => {
   }
   /////////////////////////////////////////
 
-  // Create client
-  const queryClient = new QueryClient()
-
   // Handle functions
   const handleActiveNavbar = (nav) => {
     setActive(nav)
@@ -93,6 +88,7 @@ export const AppContextProvider = ({ children }) => {
   const contextValue = {
     active,
     isGeoAllowed,
+    geoLocationCity,
     city,
     lang,
     unit,
@@ -110,12 +106,5 @@ export const AppContextProvider = ({ children }) => {
     handleLang,
     handleUnit,
   }
-  return (
-    <AppContext.Provider value={contextValue}>
-      <QueryClientProvider client={queryClient}>
-        {children}
-        {/* <ReactQueryDevtools initialIsOpen={false} /> */}
-      </QueryClientProvider>
-    </AppContext.Provider>
-  )
+  return <AppContext.Provider value={contextValue}>{children}</AppContext.Provider>
 }

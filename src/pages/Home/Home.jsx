@@ -20,8 +20,26 @@ import { FetchingError } from '../../components/FetchingError/FetchingError'
 import { LoadingSpinner } from '../../components/LoadingSpinner/LoadingSpinner'
 
 export const Home = () => {
-  const { geoLocationValue, handleCity, handleGeoCity, API_KEY, city, lang, unit } =
-    useContext(AppContext)
+  const {
+    geoLocationValue,
+    isGeoAllowed,
+    geoLocationCity,
+    handleCity,
+    handleGeoCity,
+    API_KEY,
+    city,
+    lang,
+    unit,
+  } = useContext(AppContext)
+
+  //Geolocator api fetch
+  const {
+    data: decoderData,
+    error: decoderErrorData,
+    isLoading: decoderLoading,
+    isSuccess: decoderSuccess,
+    isError: decoderError,
+  } = useDecoderApi(geoLocationValue, API_KEY)
 
   //Előjelzés api fetch
   const {
@@ -31,6 +49,15 @@ export const Home = () => {
     isSuccess: weatherSuccess,
     isError: weatherError,
   } = useGetWeather(API_KEY, city, unit, lang)
+
+  function handleSelectingCityValue() {
+    handleCity(decoderData[0]?.name)
+    handleGeoCity(decoderData[0]?.name)
+  }
+
+  if (isGeoAllowed == true && geoLocationCity == '') {
+    decoderSuccess ? handleSelectingCityValue() : ''
+  }
 
   if (weatherLoading) {
     return <LoadingSpinner />

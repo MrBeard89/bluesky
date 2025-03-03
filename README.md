@@ -28,7 +28,7 @@
 
 👉 **Városok alapján keresés**: 2. képernyőn input mezőbe beirt városnév szerinti keresés.
 
-👉 **Automata GEO lokáció(beta)**: Az app elindulásnál megkérdezi a usert hogy engedélyezi e hogy hozzáférjen a GEO adatokhoz.Egyenlőre béta fázisban.
+👉 **Automata GEO lokáció**: Az app elindulásnál megkérdezi a usert hogy engedélyezi e hogy hozzáférjen a GEO adatokhoz.
 
 👉 **Beállítások menüpont**: Itt betudjuk állítani a nyelvet, illetve azt, hogy celsius vagy fahrenheitben szeretnénk-e a hőmérsékletett megjeleniteni.
 
@@ -64,4 +64,4 @@
 
 👉 Böngészőbe átírányit a VScode, majd láthatjuk az appot.
 
-👉 UI:Github pagesben a NotFound componens nem működik, lokálisan igen.
+👉 UI:Github pagesben a NotFound componens nem működik, lokálisan igen.React Router bugos.

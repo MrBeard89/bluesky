@@ -72,7 +72,7 @@ export const Cities = () => {
 
   //Keresés utáni fetch
   const fetchAgain = async (value) => {
-    handleGeoCity('')
+    //handleGeoCity('')
     handleCity(value)
     navigate('/bluesky/home')
     const data = await queryClient.fetchQuery({
