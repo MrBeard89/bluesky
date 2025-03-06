@@ -1,35 +1,25 @@
 import React, { useContext } from 'react'
 import Switch from '@mui/material/Switch'
 import { styled } from '@mui/material/styles'
-import { AppContext } from '../../context/AppContext'
 
 import '../../styles/pages/Settings/Settings.scss'
 
-export const Settings = () => {
-  const { handleLang, lang, handleUnit, unit } = useContext(AppContext)
-  const [checkedLang, setCheckedLang] = React.useState(lang === 'hu' ? false : true)
-  const [checkedUnit, setCheckedUnit] = React.useState(unit === 'metric' ? false : true)
+export const Settings = ({ localLang, toggleLang, localUnit, toggleUnit }) => {
+  const [checkedLang, setCheckedLang] = React.useState(localLang === 'hu' ? false : true)
+  const [checkedUnit, setCheckedUnit] = React.useState(localUnit === 'metric' ? false : true)
 
   //Language change
   const handleChangeLang = (event) => {
     setCheckedLang(event.target.checked)
 
-    if (event.target.checked) {
-      handleLang('en')
-    } else {
-      handleLang('hu')
-    }
+    toggleLang()
   }
 
   //Unit change
   const handleChangeUnit = (event) => {
     setCheckedUnit(event.target.checked)
 
-    if (event.target.checked) {
-      handleUnit('imperial')
-    } else {
-      handleUnit('metric')
-    }
+    toggleUnit()
   }
 
   //Custom switch
@@ -96,12 +86,12 @@ export const Settings = () => {
   return (
     <div className='settings_wrapper'>
       <div className='settings_title_wrapper'>
-        <h2 className='settings_title'>{lang === 'hu' ? 'Beállítások' : 'Settings'}</h2>
+        <h2 className='settings_title'>{localLang === 'hu' ? 'Beállítások' : 'Settings'}</h2>
       </div>
       <div className='settings_container'>
         {/* Language */}
         <div className='settings_container_option'>
-          <p className='settings_text'>{lang === 'hu' ? 'Magyar' : 'Hun.'}</p>
+          <p className='settings_text'>{localLang === 'hu' ? 'Magyar' : 'Hun.'}</p>
 
           <IOSSwitch
             className='settings_container_switch'
@@ -110,11 +100,11 @@ export const Settings = () => {
             inputProps={{ 'aria-label': 'controlled' }}
           />
 
-          <p className='settings_text'>{lang === 'hu' ? 'Angol' : 'Eng.'}</p>
+          <p className='settings_text'>{localLang === 'hu' ? 'Angol' : 'Eng.'}</p>
         </div>
         {/* Unit Celsius or Fahrenheit */}
         <div className='settings_container_option'>
-          <p className='settings_text'>{lang === 'hu' ? 'Celsius' : 'Celsius'}</p>
+          <p className='settings_text'>{localLang === 'hu' ? 'Celsius' : 'Celsius'}</p>
 
           <IOSSwitch
             className='settings_container_switch'
@@ -123,13 +113,13 @@ export const Settings = () => {
             inputProps={{ 'aria-label': 'controlled' }}
           />
 
-          <p className='settings_text'>{lang === 'hu' ? 'Fahren.' : 'Fahren.'}</p>
+          <p className='settings_text'>{localLang === 'hu' ? 'Fahren.' : 'Fahren.'}</p>
         </div>
 
         {/* Teaser container */}
         <div className='teaser_container'>
           <p className='teaser_text'>
-            {lang === 'hu'
+            {localLang === 'hu'
               ? 'További beállítások és funkciók hamarosan ...'
               : 'More options and features coming soon ...'}
           </p>
@@ -137,12 +127,12 @@ export const Settings = () => {
 
         <div className='settings_footer'>
           <p className='footer_api_text'>
-            {lang === 'hu'
+            {localLang === 'hu'
               ? 'Létrejött az openweathermap.org apival'
               : 'Powered by openweathermap.org api'}
           </p>
           <p className='footer_name'>
-            {lang === 'hu'
+            {localLang === 'hu'
               ? 'Programozta és a designt készitette: Kovács Norbert'
               : 'Programmed and designed by: Norbert Kovács'}
           </p>

@@ -8,13 +8,11 @@ export const AppContextProvider = ({ children }) => {
   // States
   const [active, setActive] = useState('home')
   const [selectedCity, setselectedCity] = useState('')
-  const [selectedCityArray, setSelectedCityArray] = useState([])
   const [isGeoAllowed, setIsGeoAllowed] = useState(false)
   const [geoLocationCity, setGeoLocationCity] = useState('')
   const [city, setCity] = useState('Budapest') //alapértelmezés Budapest
-  const [lang, setLang] = useState('hu')
+  const [selectedCities, setSelectedCities] = useState([])
 
-  const [unit, setUnit] = useState('metric')
   const [geoLocationValue, setGeoLocationValue] = useState({
     latitude: 47.497913,
     longitude: 19.040236,
@@ -63,21 +61,16 @@ export const AppContextProvider = ({ children }) => {
     setselectedCity(city)
   }
   const handleSelectedCityArray = (city) => {
-    setSelectedCityArray((prev) => [...prev, city])
-  }
-  const handleLang = (lang) => {
-    setLang(lang)
-  }
-  const handleUnit = (unit) => {
-    setUnit(unit)
-  }
-  const handleGeoCity = (geocity) => {
-    setGeoLocationCity(geocity)
+    setSelectedCities((prev) => [...prev, city])
   }
 
   const handleDeleteSelectedCityArray = (value) => {
-    let newArray = selectedCityArray.filter((data) => data !== value)
-    setSelectedCityArray(newArray)
+    let newArray = selectedCities.filter((data) => data !== value)
+    setSelectedCities(newArray)
+  }
+
+  const handleGeoCity = (geocity) => {
+    setGeoLocationCity(geocity)
   }
 
   //Első inditásnál engedélykérés a geo adatokhoz, ha nem, akkor az alapértelmezést tölti be
@@ -90,21 +83,17 @@ export const AppContextProvider = ({ children }) => {
     isGeoAllowed,
     geoLocationCity,
     city,
-    lang,
-    unit,
+    selectedCities,
     geoLocationValue,
     API_KEY,
     selectedCity,
     setIsGeoAllowed,
-    selectedCityArray,
     handleGeoCity,
     handleSelectedCity,
-    handleSelectedCityArray,
-    handleDeleteSelectedCityArray,
     handleActiveNavbar,
     handleCity,
-    handleLang,
-    handleUnit,
+    handleSelectedCityArray,
+    handleDeleteSelectedCityArray,
   }
   return <AppContext.Provider value={contextValue}>{children}</AppContext.Provider>
 }

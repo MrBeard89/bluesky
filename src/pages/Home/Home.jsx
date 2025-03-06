@@ -19,7 +19,7 @@ import '../../styles/pages/Home/Home.scss'
 import { FetchingError } from '../../components/FetchingError/FetchingError'
 import { LoadingSpinner } from '../../components/LoadingSpinner/LoadingSpinner'
 
-export const Home = () => {
+export const Home = ({ localLang, localUnit }) => {
   const {
     geoLocationValue,
     isGeoAllowed,
@@ -28,8 +28,6 @@ export const Home = () => {
     handleGeoCity,
     API_KEY,
     city,
-    lang,
-    unit,
   } = useContext(AppContext)
 
   //Geolocator api fetch
@@ -48,7 +46,7 @@ export const Home = () => {
     isLoading: weatherLoading,
     isSuccess: weatherSuccess,
     isError: weatherError,
-  } = useGetWeather(API_KEY, city, unit, lang)
+  } = useGetWeather(API_KEY, city, localUnit, localLang)
 
   function handleSelectingCityValue() {
     handleCity(decoderData[0]?.name)
@@ -111,7 +109,7 @@ export const Home = () => {
 
             <h1 className='home_unit'>
               {Math.floor(weatherData[0].dailyForecast[0].avgTemp)}
-              {unit === 'metric' ? '°C' : '°F'}
+              {localUnit === 'metric' ? '°C' : '°F'}
             </h1>
           </div>
 
@@ -119,7 +117,7 @@ export const Home = () => {
           <div className='home_details_wrapper'>
             <div className='home_details_container'>
               <p className='home_details_title'>
-                {lang == 'hu' ? 'Mai Időjárás' : "Today's weather"}{' '}
+                {localLang == 'hu' ? 'Mai Időjárás' : "Today's weather"}{' '}
               </p>
               <div className='home_details_hours_wrapper'>
                 {filteredTodayWeatherArr.map((day, i) => {
@@ -134,7 +132,7 @@ export const Home = () => {
                         <DinamycDetailsNightIcons className='details_night_icon' />
                       )}
                       <p className='details_temp'>
-                        {Math.floor(day.avgTemp)} {unit === 'metric' ? '°C' : '°F'}
+                        {Math.floor(day.avgTemp)} {localUnit === 'metric' ? '°C' : '°F'}
                       </p>
                       {/* <hr className='details_decor_line' /> */}
                     </div>
@@ -147,14 +145,16 @@ export const Home = () => {
           {/* More data container */}
           <div className='home_more_data_wrapper'>
             <div className='home_more_data_container'>
-              <p className='home_more_data_title'>{lang == 'hu' ? 'Körülmények' : 'Conditions'}</p>
+              <p className='home_more_data_title'>
+                {localLang == 'hu' ? 'Körülmények' : 'Conditions'}
+              </p>
               <button className='home_more_data_link'>
                 <a
                   href={`https://www.idokep.hu/idojaras/${city}`}
                   rel='noreferrer noopener'
                   target='_blank'
                 >
-                  {lang === 'hu' ? 'Több info' : 'See more'}
+                  {localLang === 'hu' ? 'Több info' : 'See more'}
                 </a>
               </button>
               <div className='home_more_data_info_wrapper home_more_part_1'>
@@ -165,7 +165,7 @@ export const Home = () => {
                   </div>
                   <div className='data_container'>
                     <p className='data_container_title'>
-                      {lang == 'hu' ? 'Valós érzet' : 'Reel feel'}
+                      {localLang == 'hu' ? 'Valós érzet' : 'Reel feel'}
                     </p>
                     <p className='data_container_value'>
                       {Math.floor(weatherData[0].dailyForecast[0].feelsLike)}
@@ -179,7 +179,7 @@ export const Home = () => {
                   </div>
                   <div className='data_container'>
                     <p className='data_container_title'>
-                      {lang == 'hu' ? 'Szélsebesség' : 'Wind speed'}
+                      {localLang == 'hu' ? 'Szélsebesség' : 'Wind speed'}
                     </p>
                     <p className='data_container_value'>
                       {Math.floor(weatherData[0].dailyForecast[0].windSpeed)} km/h
@@ -196,7 +196,7 @@ export const Home = () => {
                   </div>
                   <div className='data_container'>
                     <p className='data_container_title'>
-                      {lang == 'hu' ? 'Páratartalom' : 'Humidity'}
+                      {localLang == 'hu' ? 'Páratartalom' : 'Humidity'}
                     </p>
                     <p className='data_container_value'>
                       {Math.floor(weatherData[0].dailyForecast[0].humidity)}
@@ -210,7 +210,7 @@ export const Home = () => {
                   </div>
                   <div className='data_container'>
                     <p className='data_container_title'>
-                      {lang == 'hu' ? 'Tengerszint' : 'Sea level'}
+                      {localLang == 'hu' ? 'Tengerszint' : 'Sea level'}
                     </p>
                     <p className='data_container_value'>
                       {Math.floor(weatherData[0].dailyForecast[0].seaLevel)}
@@ -224,7 +224,7 @@ export const Home = () => {
           <div className='home_forecast_wrapper'>
             <div className='home_forecast_container'>
               <p className='home_forecast_container_title'>
-                {lang == 'hu' ? '5-napos előrejelzés' : '5-day forecast'}
+                {localLang == 'hu' ? '5-napos előrejelzés' : '5-day forecast'}
               </p>
               {Object.values(weatherData[0].groupedTemps).map((forecastData, i) => {
                 let DinamycForecastDayIcons = DayIcons[`o${forecastData.icon}`]
