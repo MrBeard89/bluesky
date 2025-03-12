@@ -1,6 +1,6 @@
 <div align="center">
 <a>
-      <img src="https://i.ibb.co/7tJP6Z2R/Ke-pernyo-foto-2025-02-25-10-31-24.png" alt="Project Banner" width="550px"/>
+      <img src="https://i.ibb.co/993XF7sw/Ke-pernyo-foto-2025-03-12-11-30-58.png" alt="Project Banner" width="550px"/>
 </a>
   <h3 align="center">Bluesky Időjárás app</h3>
 
