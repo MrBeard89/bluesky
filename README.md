@@ -64,4 +64,4 @@
 
 👉 Böngészőbe átírányit a VScode, majd láthatjuk az appot.
 
-👉 UI:Github pagesben a NotFound componens nem működik, lokálisan igen.React Router bugos | Auto refetch mértékegységnél githubon bugos | Auto geolokáció http api miatt nem engedi a github, csak ha https-t átállitjuk httpre.
+      👉 UI:Github pagesben a NotFound componens nem működik, lokálisan igen.React Router bugos | Auto refetch mértékegységnél githubon bugos | Auto geolokáció http api miatt nem engedi a github, csak ha a biztonságos              kapcsolatott kikapcsoljuk(ennek az oka , hogy az api globálisan hozzáférhető, bárhonnan).
