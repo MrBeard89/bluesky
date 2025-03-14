@@ -89,7 +89,7 @@ export const fetchWeather = async (API_KEY, city, unit, lang) => {
 
 const useGetWeather = (API_KEY, city, unit, lang) => {
   return useQuery({
-    queryKey: ['weather', city, lang],
+    queryKey: ['weather', city, unit, lang],
     queryFn: () => fetchWeather(API_KEY, city, unit, lang),
     enabled: !!city, //only runs when the city is provided
     staleTime: 5 * 60 * 1000, // 5 minutes
