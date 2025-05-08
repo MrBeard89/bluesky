@@ -1,0 +1,18 @@
+.clock_container {
+  display: flex;
+  position: absolute;
+  top: 0rem;
+  right: 2rem;
+  background-color: #202b3c;
+  padding: 1rem 1rem;
+  border-radius: 1rem;
+}
+.clock_container .inner_container {
+  background-color: #0b121e;
+  padding: 0.5rem 2rem;
+  border-radius: 0.5rem;
+  box-shadow: 0px 0px 15px 1px #5773a3;
+}
+.clock_container .inner_container .actual_clock {
+  font-size: 20px;
+}/*# sourceMappingURL=Clock.css.map */

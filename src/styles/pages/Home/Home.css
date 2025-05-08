@@ -8,9 +8,17 @@
 }
 .home_container .home_info_container {
   display: flex;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+}
+.home_container .home_info_container .inner_info_container {
+  display: flex;
   flex-direction: column;
   align-items: center;
   margin-bottom: 2rem;
+  margin-left: 2rem;
+  margin-right: 2rem;
 }
 .home_container .home_info_container .home_city_name {
   margin-bottom: 0.2rem;

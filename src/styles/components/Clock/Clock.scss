@@ -1,0 +1,22 @@
+@use '../../../sass/variables' as v;
+
+.clock_container {
+  display: flex;
+  position: absolute;
+  top: 0rem;
+  right: 2rem;
+  background-color: v.$color_dark_blue;
+  padding: 1rem 1rem;
+  border-radius: 1rem;
+
+  .inner_container {
+    background-color: v.$color_dark_bg;
+    padding: 0.5rem 2rem;
+    border-radius: 0.5rem;
+    box-shadow: 0px 0px 15px 1px v.$color_light_bg;
+
+    .actual_clock {
+      font-size: v.$font_size_xl;
+    }
+  }
+}

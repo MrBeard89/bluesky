@@ -18,6 +18,7 @@ import '../../styles/pages/Home/Home.scss'
 //
 import { FetchingError } from '../../components/FetchingError/FetchingError'
 import { LoadingSpinner } from '../../components/LoadingSpinner/LoadingSpinner'
+import { Clock } from '../../components/Clock/Clock'
 
 export const Home = ({ localLang, localUnit }) => {
   const {
@@ -97,20 +98,24 @@ export const Home = ({ localLang, localUnit }) => {
         <>
           {/* Info conatiner */}
           <div className='home_info_container'>
-            <h1 className='home_city_name'>{weatherData[0].cityNameData}</h1>
-            <div className='home_description'>{weatherData[0].dailyForecast[0].weatherDesc}</div>
-            <div className='home_icon_container'>
-              {weatherData[0].dailyForecast[0].weatherIcon.slice(-1) === 'd' ? (
-                <DinamycDayIcons className='day_icon' />
-              ) : (
-                <DinamycNightIcons className='night_icon' />
-              )}
-            </div>
+            <div className='inner_info_container'>
+              <h1 className='home_city_name'>{weatherData[0].cityNameData}</h1>
+              <div className='home_description'>{weatherData[0].dailyForecast[0].weatherDesc}</div>
+              <div className='home_icon_container'>
+                {weatherData[0].dailyForecast[0].weatherIcon.slice(-1) === 'd' ? (
+                  <DinamycDayIcons className='day_icon' />
+                ) : (
+                  <DinamycNightIcons className='night_icon' />
+                )}
+              </div>
 
-            <h1 className='home_unit'>
-              {Math.floor(weatherData[0].dailyForecast[0].avgTemp)}
-              {localUnit === 'metric' ? '°C' : '°F'}
-            </h1>
+              <h1 className='home_unit'>
+                {Math.floor(weatherData[0].dailyForecast[0].avgTemp)}
+                {localUnit === 'metric' ? '°C' : '°F'}
+              </h1>
+
+              <Clock />
+            </div>
           </div>
 
           {/*Forecast details container */}
