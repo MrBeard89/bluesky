@@ -10,6 +10,7 @@
 
 - React
 - React Context API - Client state management
+- Localstorage
 - Material UI
 - React Router
 - MUI - Emotion
@@ -32,7 +33,9 @@
 
 👉 **Beállítások menüpont**: Itt betudjuk állítani a nyelvet, illetve azt, hogy celsius vagy fahrenheitben szeretnénk-e a hőmérsékletett megjeleniteni.
 
-👉 **Város kártyák elmentése**: A már keresett városok mentése listaként.
+👉 **Város kártyák elmentése**: A már keresett városok mentése listaként localStorageal.
+
+👉 **Aktuális idő**: Aktuális idő kijelzése.
 
 👉 **Város szerinti időjárás adatok megjelenitése**: 2. képernyőn kártyára kattintva , adott város adatok betöltése API ból az 1. képernyőn.
 
@@ -64,4 +67,4 @@
 
 👉 Böngészőbe átírányit a VScode, majd láthatjuk az appot.
 
-      👉 UI:Github pagesben a NotFound componens nem működik, lokálisan igen.React Router bugos  | Auto geolokáció http api miatt nem engedi a github, csak ha a biztonságos              kapcsolatott kikapcsoljuk(ennek az oka , hogy az api globálisan hozzáférhető, bárhonnan).
+      👉 UI:Github pagesben a NotFound componens nem működik, lokálisan igen.React Router bugos
