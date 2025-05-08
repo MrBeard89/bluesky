@@ -1,1 +1,1 @@
-{"version":3,"sourceRoot":"","sources":["Clock.scss","../../../sass/_variables.scss"],"names":[],"mappings":"AAEA;EACE;EACA;EACA;EACA;EACA,kBCMgB;EDLhB;EACA;;AAEA;EACE;EACA;EACA;EACA;;AAEA;EACE,WCQS","file":"Clock.css"}
+{"version":3,"sourceRoot":"","sources":["Clock.scss","../../../sass/_variables.scss"],"names":[],"mappings":"AAEA;EACE;EACA,kBCSgB;EDRhB;EACA;EACA;EACA;EACA;EACA;;AAEA;EACE,kBCDY;EDEZ;EACA;EACA;;AAEA;EACE,WCQU;EDPV,aCiBa;;;ADZnB;EACE;IACE;IACA;IACA;IACA;;EAEA;IACE","file":"Clock.css"}

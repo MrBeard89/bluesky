@@ -1,18 +1,32 @@
 .clock_container {
   display: flex;
-  position: absolute;
-  top: 0rem;
-  right: 2rem;
   background-color: #202b3c;
   padding: 1rem 1rem;
-  border-radius: 1rem;
+  border-radius: 0.5rem;
+  position: relative;
+  margin-top: 2rem;
+  top: unset;
+  right: unset;
 }
 .clock_container .inner_container {
   background-color: #0b121e;
   padding: 0.5rem 2rem;
   border-radius: 0.5rem;
-  box-shadow: 0px 0px 15px 1px #5773a3;
+  box-shadow: unset;
 }
 .clock_container .inner_container .actual_clock {
-  font-size: 20px;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+@media only screen and (min-width: 768px) {
+  .clock_container {
+    position: absolute;
+    margin-top: unset;
+    top: 0rem;
+    right: 2rem;
+  }
+  .clock_container .inner_container {
+    box-shadow: 0px 0px 15px 1px #5773a3;
+  }
 }/*# sourceMappingURL=Clock.css.map */
