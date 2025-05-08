@@ -4,6 +4,7 @@
   align-items: center;
   padding-top: 2rem;
   margin-bottom: 6rem;
+  height: 100%;
 }
 .home_container .home_info_container {
   display: flex;
@@ -30,7 +31,7 @@
 .home_container .home_details_wrapper {
   display: flex;
   justify-content: center;
-  width: 100vw;
+  width: 100%;
   margin-bottom: 2rem;
   position: relative;
 }
@@ -89,7 +90,7 @@
 .home_container .home_more_data_wrapper {
   display: flex;
   justify-content: center;
-  width: 100vw;
+  width: 100%;
   height: fit-content;
   margin-bottom: 2rem;
 }
@@ -135,7 +136,7 @@
   align-items: center;
   gap: 1rem;
   width: 100%;
-  padding: 2rem 1rem 1rem 1rem;
+  padding: 2rem 0.5rem 1rem 0.5rem;
 }
 .home_container .home_more_data_wrapper .home_more_data_container .home_more_data_info_wrapper .data_info_container {
   display: flex;
@@ -143,6 +144,7 @@
   gap: 0.5rem;
   width: 130px;
   max-width: 150px;
+  padding: 0.2rem;
 }
 .home_container .home_more_data_wrapper .home_more_data_container .home_more_data_info_wrapper .data_info_container .icon_container {
   display: flex;
@@ -160,7 +162,7 @@
   text-align: left;
 }
 .home_container .home_more_data_wrapper .home_more_data_container .home_more_data_info_wrapper .data_info_container .data_container .data_container_title {
-  font-size: 18px;
+  font-size: 16px;
   padding-top: 0.4rem;
   color: #5d6976;
 }
@@ -172,7 +174,7 @@
 .home_container .home_forecast_wrapper {
   display: flex;
   justify-content: center;
-  width: 100vw;
+  width: 100%;
   height: fit-content;
   margin-bottom: 2rem;
 }
@@ -196,13 +198,14 @@
 .home_container .home_forecast_wrapper .home_forecast_container .home_forecast_element {
   display: flex;
   justify-content: space-between;
+  gap: 0.8rem;
   align-items: center;
   padding: 1rem;
 }
 .home_container .home_forecast_wrapper .home_forecast_container .home_forecast_element .forecast_date {
   color: #5d6976;
   font-weight: 700;
-  width: 100px;
+  width: 130px;
 }
 .home_container .home_forecast_wrapper .home_forecast_container .home_forecast_element .forecast_desc {
   width: 125px;
@@ -214,6 +217,8 @@
   font-size: 24px;
 }
 .home_container .home_forecast_wrapper .home_forecast_container .home_forecast_element .forecast_max_min_value {
+  text-align: right;
+  width: 80px;
   font-weight: 700;
 }
 .home_container .home_forecast_wrapper .home_forecast_container .home_forecast_element .forecast_max_min_value span {

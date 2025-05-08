@@ -5,13 +5,13 @@ export const AppContext = createContext(null) // Create a context object
 export const AppContextProvider = ({ children }) => {
   //Weather API_KEY
   const API_KEY = import.meta.env.VITE_API_KEY
+
   // States
   const [active, setActive] = useState('home')
   const [selectedCity, setselectedCity] = useState('')
   const [isGeoAllowed, setIsGeoAllowed] = useState(false)
   const [geoLocationCity, setGeoLocationCity] = useState('')
   const [city, setCity] = useState('Budapest') //alapértelmezés Budapest
-  const [selectedCities, setSelectedCities] = useState([])
 
   const [geoLocationValue, setGeoLocationValue] = useState({
     latitude: 47.497913,
@@ -60,14 +60,17 @@ export const AppContextProvider = ({ children }) => {
   const handleSelectedCity = (city) => {
     setselectedCity(city)
   }
-  const handleSelectedCityArray = (city) => {
-    setSelectedCities((prev) => [...prev, city])
-  }
+  // const handleSelectedCityArray = (city) => {
+  //   let arr = JSON.parse(localStorage.getItem('local_cities'))
+  //   arr.push(city)
+  //   localStorage.setItem('local_cities', JSON.stringify(arr))
+  // }
 
-  const handleDeleteSelectedCityArray = (value) => {
-    let newArray = selectedCities.filter((data) => data !== value)
-    setSelectedCities(newArray)
-  }
+  // const handleDeleteSelectedCityArray = (value) => {
+  //   let newArray = JSON.parse(localStorage.getItem('local_cities')).filter((x) => x !== value)
+  //   localStorage.setItem('local_cities', JSON.stringify(newArray))
+  //   window.location.reload()
+  // }
 
   const handleGeoCity = (geocity) => {
     setGeoLocationCity(geocity)
@@ -83,7 +86,6 @@ export const AppContextProvider = ({ children }) => {
     isGeoAllowed,
     geoLocationCity,
     city,
-    selectedCities,
     geoLocationValue,
     API_KEY,
     selectedCity,
@@ -92,8 +94,8 @@ export const AppContextProvider = ({ children }) => {
     handleSelectedCity,
     handleActiveNavbar,
     handleCity,
-    handleSelectedCityArray,
-    handleDeleteSelectedCityArray,
+    // handleSelectedCityArray,
+    // handleDeleteSelectedCityArray,
   }
   return <AppContext.Provider value={contextValue}>{children}</AppContext.Provider>
 }

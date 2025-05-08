@@ -108,6 +108,7 @@
   background-color: #2e3d56;
   border-radius: 1rem;
   font-size: 35px;
+  overflow: auto;
 }
 .cities_wrapper .cities_list_container .cities_list_wrapper .cities_list_element:hover {
   background-color: #202b3c;

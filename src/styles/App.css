@@ -11,6 +11,11 @@ body {
   background-color: #0b121e;
   color: #d5dbe1;
   position: relative;
+  background-image: url("/earth-bg.png");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: center;
+  background-position-y: 2rem;
 }
 
 /* Firefox */

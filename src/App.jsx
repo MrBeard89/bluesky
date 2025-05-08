@@ -17,6 +17,7 @@ import { useEffect, useState } from 'react'
 function App() {
   const [localLang, setLocalLang] = useState(localStorage.getItem('local_lang') || 'hu')
   const [localUnit, setLocalUnit] = useState(localStorage.getItem('local_unit') || 'metric')
+  const [localCities, setLocalCities] = useState(localStorage.getItem('local_cities') || '[]')
 
   // Create client
   const queryClient = new QueryClient()
@@ -28,6 +29,19 @@ function App() {
   const toggleUnit = () => {
     localUnit === 'metric' ? setLocalUnit('imperial') : setLocalUnit('metric')
   }
+  const handleSelectedCityArray = (city) => {
+    let arr = JSON.parse(localStorage.getItem('local_cities'))
+    arr.push(city)
+    setLocalCities(JSON.stringify(arr))
+    // localStorage.setItem('local_cities', JSON.stringify(arr))
+  }
+
+  const handleDeleteSelectedCityArray = (value) => {
+    let newArray = JSON.parse(localStorage.getItem('local_cities')).filter((x) => x !== value)
+    setLocalCities(JSON.stringify(newArray))
+    // localStorage.setItem('local_cities', JSON.stringify(newArray))
+    //window.location.reload()
+  }
 
   //UseEffects for local variables
   useEffect(() => {
@@ -37,6 +51,10 @@ function App() {
   useEffect(() => {
     localStorage.setItem('local_unit', localUnit)
   }, [localUnit])
+
+  useEffect(() => {
+    localStorage.setItem('local_cities', localCities)
+  }, [localCities])
 
   return (
     <>
@@ -57,7 +75,15 @@ function App() {
               />
               <Route
                 path='/bluesky/cities'
-                element={<Cities localLang={localLang} localUnit={localUnit} />}
+                element={
+                  <Cities
+                    localLang={localLang}
+                    localUnit={localUnit}
+                    localCities={localCities}
+                    handleSelectedCityArray={handleSelectedCityArray}
+                    handleDeleteSelectedCityArray={handleDeleteSelectedCityArray}
+                  />
+                }
               />
               <Route
                 path='/bluesky/settings'

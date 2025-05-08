@@ -14,6 +14,11 @@ body {
   background-color: v.$color_dark_bg;
   color: v.$color_white;
   position: relative;
+  background-image: url('/earth-bg.png');
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: center;
+  background-position-y: 2rem;
 }
 
 //Custom scrollbar

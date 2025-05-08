@@ -26,6 +26,15 @@ export const DayIcons = {
   o11d: IoThunderstorm,
   o13d: MdCloudySnowing,
   o50d: MdFoggy,
+  o01n: MdWbSunny,
+  o02n: FaCloudSun,
+  o03n: IoCloudSharp,
+  o04n: BsCloudsFill,
+  o09n: BsCloudRainFill,
+  o10n: FaCloudSunRain,
+  o11n: IoThunderstorm,
+  o13n: MdCloudySnowing,
+  o50n: MdFoggy,
 }
 export const NightIcons = {
   o01n: BsFillMoonStarsFill,

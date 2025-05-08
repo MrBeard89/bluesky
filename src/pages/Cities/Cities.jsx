@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import { AppContext } from '../../context/AppContext'
 import { Box, FormControl } from '@mui/material'
 
@@ -11,17 +11,23 @@ import { useNavigate } from 'react-router'
 import { useQueryClient } from '@tanstack/react-query'
 import { fetchWeather } from '../../hooks/useGetWeather'
 
-export const Cities = ({ localLang, localUnit }) => {
+export const Cities = ({
+  localLang,
+  localUnit,
+  localCities,
+  handleSelectedCityArray,
+  handleDeleteSelectedCityArray,
+}) => {
   const {
     API_KEY,
     handleCity,
     handleSelectedCity,
-    selectedCities,
-    handleSelectedCityArray,
-    handleDeleteSelectedCityArray,
+    // handleSelectedCityArray,
+    // handleDeleteSelectedCityArray,
   } = useContext(AppContext)
-  const [cityValue, setCityValue] = useState('')
   const [isCity, setIsCity] = useState(true)
+  const [cityValue, setCityValue] = useState('')
+  let changedLocalCityArray = JSON.parse(localCities)
 
   const handleInit = (cityValue) => {
     handleSelectedCity(cityValue)
@@ -42,12 +48,6 @@ export const Cities = ({ localLang, localUnit }) => {
     } else if (cityValue.length === 0) {
       alert(localLang === 'hu' ? 'Adj meg egy város nevet!' : 'You have to type a valid cityname!')
       return
-    } else if (cityValue === selectedCities.find((x) => x === cityValue)) {
-      setCityValue('')
-      alert(
-        localLang === 'hu' ? 'Már rákerestél erre a városra!' : 'You alreday search for this city!'
-      )
-      return
     }
 
     try {
@@ -55,7 +55,25 @@ export const Cities = ({ localLang, localUnit }) => {
       const response = await fetch(url)
       const data = await response.json()
 
-      data?.message == 'city not found' ? setIsCity(false) : handleInit(cityValue)
+      if (data?.cod === '404') {
+        setIsCity(false)
+        return
+      }
+
+      if (data.city.name === changedLocalCityArray.find((x) => x === data.city.name)) {
+        setCityValue('')
+        alert(
+          localLang === 'hu'
+            ? 'Már rákerestél erre a városra!'
+            : 'You alreday search for this city!'
+        )
+        return
+      }
+
+      if (data?.cod == '200') {
+        handleInit(data.city.name)
+        setCityValue('')
+      }
 
       return data
     } catch (error) {
@@ -149,10 +167,10 @@ export const Cities = ({ localLang, localUnit }) => {
 
       {/* Cities array component*/}
       <Box className='cities_list_container'>
-        {selectedCities.length === 0 ? (
+        {changedLocalCityArray.length === 0 ? (
           <p>{localLang === 'hu' ? 'Nincsenek városaid!' : 'You not have any cities!'}</p>
         ) : (
-          selectedCities.map((x, i) => {
+          changedLocalCityArray.map((x, i) => {
             return (
               <Box key={i} className='cities_list_wrapper'>
                 <p className='cities_list_element' onClick={() => fetchAgain(x)}>

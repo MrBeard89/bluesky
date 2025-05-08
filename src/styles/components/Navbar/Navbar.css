@@ -6,6 +6,7 @@
   bottom: 0;
   background-color: #202b3c;
   z-index: 5;
+  box-shadow: 0px 0px 25px 5px #0b121e;
 }
 .navbar_container .navbar_link_container {
   display: flex;

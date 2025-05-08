@@ -8,7 +8,9 @@
   position: fixed;
   bottom: 0;
   background-color: v.$color_dark_blue;
+
   z-index: 5;
+  box-shadow: 0px 0px 25px 5px v.$color_dark_bg;
 
   .navbar_link_container {
     display: flex;

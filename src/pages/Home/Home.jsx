@@ -228,15 +228,16 @@ export const Home = ({ localLang, localUnit }) => {
               </p>
               {Object.values(weatherData[0].groupedTemps).map((forecastData, i) => {
                 let DinamycForecastDayIcons = DayIcons[`o${forecastData.icon}`]
-                let DinamycForecastNightIcons = NightIcons[`o${forecastData.icon}`]
+                // let DinamycForecastNightIcons = NightIcons[`o${forecastData.icon}`]
                 return (
                   <div className='home_forecast_element' key={i}>
                     <p className='forecast_date'>{forecastData.forecastDate}</p>
-                    {forecastData.icon.slice(-1) === 'd' ? (
+                    <DinamycForecastDayIcons className='forecast_day_icon' />
+                    {/* {forecastData.icon.slice(-1) === 'd' ? (
                       <DinamycForecastDayIcons className='forecast_day_icon' />
                     ) : (
                       <DinamycForecastNightIcons className='forecast_night_icon' />
-                    )}
+                    )} */}
                     <p className='forecast_desc'>{forecastData.desc}</p>
                     <p className='forecast_max_min_value'>
                       {Math.floor(forecastData.max)}
